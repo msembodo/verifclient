@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="507.0" prefWidth="400.0" stylesheets="@light.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.idemia.jkt.tec.VerifClient.view.EditLiteralsController">
+   <children>
+      <TabPane prefHeight="473.0" prefWidth="400.0" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <tabs>
+            <Tab closable="false" text="File Structure">
+               <content>
+                  <AnchorPane prefHeight="476.0" prefWidth="400.0">
+                     <children>
+                        <GridPane layoutX="14.0" layoutY="30.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="119.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="273.0" minWidth="10.0" prefWidth="265.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <TextField fx:id="txtTr" GridPane.columnIndex="1" />
+                              <TextField fx:id="txtLf" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="txtCy" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtLk" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label text="Transparent" />
+                              <Label text="Linear Fixed" GridPane.rowIndex="1" />
+                              <Label text="Cyclic" GridPane.rowIndex="2" />
+                              <Label text="Link" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Access Conditions">
+               <content>
+                  <AnchorPane prefHeight="476.0" prefWidth="400.0">
+                     <children>
+                        <GridPane layoutX="8.0" layoutY="187.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="119.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="279.0" minWidth="10.0" prefWidth="265.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Always" />
+                              <Label text="CHV1" GridPane.rowIndex="1" />
+                              <Label text="CHV2" GridPane.rowIndex="2" />
+                              <Label text="ADM1" GridPane.rowIndex="3" />
+                              <Label text="ADM2" GridPane.rowIndex="4" />
+                              <Label text="Never" GridPane.rowIndex="11" />
+                              <Label text="AND" GridPane.rowIndex="12" />
+                              <Label text="OR" GridPane.rowIndex="13" />
+                              <TextField fx:id="txtAlw" GridPane.columnIndex="1" />
+                              <TextField fx:id="txtChv1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="txtChv2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtAdm1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="txtAdm2" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Label text="ADM3" GridPane.rowIndex="5" />
+                              <Label text="ADM4" GridPane.rowIndex="6" />
+                              <Label text="ADM5" GridPane.rowIndex="7" />
+                              <Label text="ADM6" GridPane.rowIndex="8" />
+                              <Label text="ADM7" GridPane.rowIndex="9" />
+                              <Label text="ADM8" GridPane.rowIndex="10" />
+                              <TextField fx:id="txtAdm3" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <TextField fx:id="txtAdm4" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <TextField fx:id="txtAdm5" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <TextField fx:id="txtAdm6" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                              <TextField fx:id="txtAdm7" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                              <TextField fx:id="txtAdm8" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                              <TextField fx:id="txtNev" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                              <TextField fx:id="txtAnd" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                              <TextField fx:id="txtOr" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+      <ButtonBar layoutX="194.0" layoutY="467.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.rightAnchor="8.0">
+        <buttons>
+          <Button mnemonicParsing="false" onAction="#handleButtonCancel" text="Cancel" />
+            <Button layoutX="125.0" layoutY="17.0" mnemonicParsing="false" onAction="#handleButtonSave" text="Save" />
+        </buttons>
+      </ButtonBar>
+   </children>
+</AnchorPane>

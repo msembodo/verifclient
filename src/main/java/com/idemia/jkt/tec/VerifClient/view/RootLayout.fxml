@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="rootBorderPane" prefHeight="768.0" prefWidth="1366.0" stylesheets="@light.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.idemia.jkt.tec.VerifClient.view.RootLayoutController">
+   <top>
+      <MenuBar fx:id="menuBar">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuLoadCsv" text="Load CSV" />
+                  <Menu mnemonicParsing="false" text="Import From">
+                    <items>
+                      <MenuItem disable="true" mnemonicParsing="false" text="ex-Morpho XML" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="SIMPML" />
+                    </items>
+                  </Menu>
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuSaveConfiguration" text="Save Configuration" />
+                  <SeparatorMenuItem mnemonicParsing="false" onAction="#handleMenuSaveConfiguration" />
+              <MenuItem mnemonicParsing="false" onAction="#handleMenuClose" text="Quit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Tools">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuSelectReader" text="Select Reader" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuEditLiterals" text="Edit Literals" />
+              <MenuItem mnemonicParsing="false" onAction="#handleMenuRun" text="Run" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

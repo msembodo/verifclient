@@ -1,0 +1,382 @@
+/usr/bin/python2.7 /home/msembodo/PycharmProjects/FileVerif/generate_err_doc.py
+43 file(s) with errors/warnings:
+3F00/7F10/5F3A/4F4A
+3F00/7F20/6F39
+3F00/7F10/5F3A/4F30
+3F00/7F20/6F17
+3F00/7F4F/6F7E
+3F00/7F10/6F3C
+3F00/7F10/6F3B
+3F00/7F4F/6F4B
+3F00/7F10/6F3A
+3F00/7F4F/6FCB
+3F00/7F10/6F42
+3F00/7F10/6F40
+3F00/7F4F/5F3B/4F20
+3F00/7F10/6F44
+3F00/7F10/6F06
+3F00/7F4F/6F42
+3F00/7F4F/6F43
+3F00/7F4F/6F40
+3F00/7F4F/6F3C
+3F00/7F10/5F3A/4F09
+3F00/7F20/6F06
+3F00/7F4F/6F06
+3F00/7F4F/6F07
+3F00/7F10/6F4F
+3F00/7F4F/6F05
+3F00/7F4F/6F56
+3F00/7F10/6F4B
+3F00/7F20/6FC9
+3F00/7F4F/5F3B/4F52
+3F00/7F4F/6F39
+3F00/7F4F/6F82
+3F00/7F4F/6F83
+3F00/7F4F/6FE2
+3F00/7F10/6F4A
+3F00/7F4F/6FC7
+3F00/7F10/5F3A/4F3D
+3F00/7F10/5F3A/4F3A
+3F00/7F4F/6F3B
+3F00/7F10/5F3A/4F3B
+3F00/7F4F/6F73
+3F00/7F4F/6FC8
+3F00/7F4F/6FC9
+3F00/2F06
+
+3F00/7F10/5F3A/4F4A
+operation   : Check Linked File (1)
+linked file : 3F007F106F4A
+message     : Different Linked file Status
+operation   : Test 3G Access Condition (1)
+message     : Create EF Access condition Not Correct
+
+3F00/7F20/6F39
+operation   : Test 3G Access Condition (4)
+message     : Update 3G Access condition Not Correct
+message     : Create EF Access condition Not Correct
+
+3F00/7F10/5F3A/4F30
+operation   : Test Access Condition
+message     : Wrong Expected Response
+output      : 00 00 00 62 4F 30 04 00 15 FF 55 01 02 01 31
+expected    : XX XX 00 4E<4F 30 04 XX 15 XX 55 XX XX 01 27<
+operation   : Test 3G Status (2)
+message     : Wrong File Size
+message     : Wrong File Record Size
+
+3F00/7F20/6F17
+operation   : Test 3G Access Condition (2)
+message     : Create EF Access condition Not Correct
+
+3F00/7F4F/6F7E
+operation   : Check Linked File (1)
+linked file : 3F007F206F7E
+message     : Different Linked file Status
+
+3F00/7F10/6F3C
+operation   : Test 3G Access Condition (2)
+message     : Create EF Access condition Not Correct
+
+3F00/7F10/6F3B
+operation   : Test 3G Access Condition (4)
+message     : Update 3G Access condition Not Correct
+message     : Create EF Access condition Not Correct
+
+3F00/7F4F/6F4B
+operation   : Test UPDATE Linked File (1)
+message     : Different UPDATED Linked file Value
+operation   : Test 3G Access Condition (2)
+message     : Update 3G Access condition Not Correct
+message     : Create EF Access condition Not Correct
+
+3F00/7F10/6F3A
+operation   : Test 3G Access Condition (30)
+message     : Activate 3G Access condition Not Correct
+message     : Deactivate 3G Access condition Not Correct
+message     : Create EF Access condition Not Correct
+
+3F00/7F4F/6FCB
+operation   : Test File Content (2)
+message     : Wrong Expected Response
+record      : 1
+output      : 01 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+expected    : FF<00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF 
+record      : 2
+output      : 01 00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+expected    : FF<00 FF FF FF FF FF FF FF FF FF FF FF FF FF FF 
+
+3F00/7F10/6F42
+operation   : Test 3G Access Condition (3)
+message     : Create EF Access condition Not Correct
+
+3F00/7F10/6F40
+operation   : Test 3G Access Condition (2)
+message     : Create EF Access condition Not Correct
+
+3F00/7F4F/5F3B/4F20
+operation   : Check Linked File (1)
+linked file : 3F007F206F20
+message     : Different Linked file Status
+
+3F00/7F10/6F44
+operation   : Test 3G Access Condition (2)
+message     : Create EF Access condition Not Correct
+
+3F00/7F10/6F06
+operation   : Test Access Condition
+message     : Wrong Expected Response
+output      : 00 00 01 B0 6F 06 04 00 0F FF 55 01 02 01 30
+expected    : XX XX 08<34<6F 06 04 XX 05<XX 55 XX XX 01 64<
+operation   : Check Linked File (1)
+linked file : 3F002F06
+message     : Different Linked file Status
+operation   : Test UPDATE Linked File (1)
+message     : Linked file cannot be read/updated
+operation   : Test 3G Status (3)
+message     : Wrong File Size
+message     : Wrong File Record Size
+message     : Wrong Number of Record
+operation   : Test 3G Access Condition (1)
+message     : Update 3G Access condition Not Correct
+
+3F00/7F4F/6F42
+operation   : Test 3G Access Condition (1)
+message     : Create EF Access condition Not Correct
+
+3F00/7F4F/6F43
+operation   : Test 3G Access Condition (1)
+message     : Create EF Access condition Not Correct
+
+3F00/7F4F/6F40
+operation   : Test 3G Access Condition (1)
+message     : Create EF Access condition Not Correct
+
+3F00/7F4F/6F3C
+operation   : Test 3G Access Condition (1)
+message     : Create EF Access condition Not Correct
+
+3F00/7F10/5F3A/4F09
+operation   : Test File Content (9)
+message     : Wrong Expected Response
+record      : 1
+output      : 01 00
+expected    : 00<00 
+record      : 2
+output      : 01 00
+expected    : 00<00 
+record      : 3
+output      : 01 00
+expected    : 00<00 
+record      : 4
+output      : 01 00
+expected    : 00<00 
+record      : 5
+output      : 01 00
+expected    : 00<00 
+record      : 6
+output      : 01 00
+expected    : 00<00 
+record      : 7
+output      : 01 00
+expected    : 00<00 
+record      : 8
+output      : 01 00
+expected    : 00<00 
+record      : 9
+output      : 01 00
+expected    : 00<00 
+
+3F00/7F20/6F06
+operation   : Test Access Condition
+message     : Wrong Expected Response
+output      : 00 00 01 E0 6F 06 04 00 05 FF 55 01 02 01 30
+expected    : XX XX 08<34<6F 06 04 XX 05 XX 55 XX XX 01 64<
+operation   : Check Linked File (1)
+linked file : 3F002F06
+message     : Different Linked file Status
+operation   : Test UPDATE Linked File (1)
+message     : Linked file cannot be read/updated
+operation   : Test 3G Status (3)
+message     : Wrong File Size
+message     : Wrong File Record Size
+message     : Wrong Number of Record
+
+3F00/7F4F/6F06
+operation   : Test Access Condition
+message     : Wrong Expected Response
+output      : 00 00 02 40 6F 06 04 00 05 FF 55 01 02 01 30
+expected    : XX XX 08<34<6F 06 04 XX 05 XX 55 XX XX 01 64<
+operation   : Check Linked File (1)
+linked file : 3F002F06
+message     : Different Linked file Status
+operation   : Test UPDATE Linked File (1)
+message     : Linked file cannot be read/updated
+operation   : Test 3G Status (3)
+message     : Wrong File Size
+message     : Wrong File Record Size
+message     : Wrong Number of Record
+
+3F00/7F4F/6F07
+operation   : Check Linked File (1)
+linked file : 3F007F206F07
+message     : Different Linked file Status
+
+3F00/7F10/6F4F
+operation   : Test 3G Access Condition (2)
+message     : Create EF Access condition Not Correct
+
+3F00/7F4F/6F05
+operation   : Test Access Condition
+message     : Wrong Expected Response
+output      : 00 00 00 08 6F 05 04 00 01 FF 55 01 02 00 00
+expected    : XX XX 00 14<6F 05 04 XX 01 XX 55 XX XX 00 XX 
+operation   : Check Linked File (2)
+linked file : 3F002F05
+message     : Different Linked file Status
+message     : Different Linked file Value
+operation   : Test UPDATE Linked File (2)
+message     : Wrong Expected Response
+message     : Linked file cannot be read
+operation   : Test 3G Status (1)
+message     : Wrong File Size
+
+3F00/7F4F/6F56
+operation   : Test 3G Access Condition (1)
+message     : Update 3G Access condition Not Correct
+
+3F00/7F10/6F4B
+operation   : Test 3G Access Condition (4)
+message     : Update 3G Access condition Not Correct
+message     : Create EF Access condition Not Correct
+
+3F00/7F20/6FC9
+operation   : Test File Content (1)
+message     : Wrong Expected Response
+record      : 1
+output      : 00 00 00 00
+expected    : FF<FF<FF<FF<
+
+3F00/7F4F/5F3B/4F52
+operation   : Check Linked File (1)
+linked file : 3F007F206F52
+message     : Different Linked file Status
+
+3F00/7F4F/6F39
+operation   : Test UPDATE Linked File (1)
+message     : Different UPDATED Linked file Value
+operation   : Test 3G Access Condition (1)
+message     : Update 3G Access condition Not Correct
+
+3F00/7F4F/6F82
+operation   : Test Access Condition
+message     : Wrong Expected Response
+output      : 00 00 01 2C 6F 82 04 00 12 1F 55 01 02 03 64
+expected    : XX XX 01 2C 6F 82 04 XX 12 1X 55 XX XX 03 03<
+operation   : Test 3G Status (2)
+message     : Wrong File Record Size
+message     : Wrong Number of Record
+operation   : Test 3G Access Condition (2)
+message     : Update 3G Access condition Not Correct
+
+3F00/7F4F/6F83
+operation   : Test Access Condition
+message     : Wrong Expected Response
+output      : 00 00 01 2C 6F 83 04 00 12 1F 55 01 02 03 64
+expected    : XX XX 01 2C 6F 83 04 XX 12 1X 55 XX XX 03 03<
+operation   : Test 3G Status (2)
+message     : Wrong File Record Size
+message     : Wrong Number of Record
+operation   : Test 3G Access Condition (2)
+message     : Update 3G Access condition Not Correct
+
+3F00/7F4F/6FE2
+operation   : Test Access Condition
+message     : Wrong Expected Response
+output      : 00 00 00 64 6F E2 04 00 15 FF 00 01 02 01 64
+expected    : XX XX 00 64 6F E2 04 XX 15 XX 55<XX XX 01 64 
+operation   : Test 3G Access Condition (2)
+message     : Activate 3G Access condition Not Correct
+message     : Deactivate 3G Access condition Not Correct
+
+3F00/7F10/6F4A
+operation   : Test 3G Access Condition (2)
+message     : Create EF Access condition Not Correct
+
+3F00/7F4F/6FC7
+operation   : Test File Content (3)
+message     : Wrong Expected Response
+record      : 1
+output      : 08 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF 0B 81 22 22 22 22 22 22 22 22 22 22 FF 01
+expected    : 04<FF 1A<08<F2<FF FF FF FF FF FF FF FF FF FF FF FF<FF<FF<FF<FF<FF<FF<FF<FF<FF<FF<FF<FF FF<
+record      : 2
+output      : 08 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF 0B 81 22 22 22 22 22 22 22 22 22 22 FF 02
+expected    : 04<FF 1A<08<F2<FF FF FF FF FF FF FF FF FF FF FF FF<FF<FF<FF<FF<FF<FF<FF<FF<FF<FF<FF<FF FF<
+record      : 3
+output      : 08 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF 0B 81 22 22 22 22 22 22 22 22 22 22 FF 03
+expected    : 04<FF 1A<08<F2<FF FF FF FF FF FF FF FF FF FF FF FF<FF<FF<FF<FF<FF<FF<FF<FF<FF<FF<FF<FF FF<
+
+3F00/7F10/5F3A/4F3D
+operation   : Check Linked File (1)
+linked file : 3F007F106F3D
+message     : Different Linked file Status
+operation   : Test UPDATE Linked File (1)
+message     : Different UPDATED Linked file Value
+operation   : Test 3G Access Condition (1)
+message     : Create EF Access condition Not Correct
+
+3F00/7F10/5F3A/4F3A
+operation   : Check Linked File (1)
+linked file : 3F007F106F3A
+message     : Different Linked file Status
+operation   : Test 3G Access Condition (1)
+message     : Create EF Access condition Not Correct
+
+3F00/7F4F/6F3B
+operation   : Test UPDATE Linked File (1)
+message     : Different UPDATED Linked file Value
+operation   : Test 3G Access Condition (2)
+message     : Update 3G Access condition Not Correct
+message     : Create EF Access condition Not Correct
+
+3F00/7F10/5F3A/4F3B
+operation   : Test 3G Access Condition (2)
+message     : Create EF Access condition Not Correct
+
+3F00/7F4F/6F73
+operation   : Check Linked File (1)
+linked file : 3F007F206F53
+message     : Different Linked file Status
+
+3F00/7F4F/6FC8
+operation   : Test File Content (3)
+message     : Wrong Expected Response
+record      : 1
+output      : 02 02 22 22 FF FF FF FF FF FF FF FF FF
+expected    : FF<FF<FF<FF<FF FF FF FF FF FF FF FF FF 
+record      : 2
+output      : 02 02 22 22 FF FF FF FF FF FF FF FF FF
+expected    : FF<FF<FF<FF<FF FF FF FF FF FF FF FF FF 
+record      : 3
+output      : 02 02 22 22 FF FF FF FF FF FF FF FF FF
+expected    : FF<FF<FF<FF<FF FF FF FF FF FF FF FF FF 
+
+3F00/7F4F/6FC9
+operation   : Test File Content (1)
+message     : Wrong Expected Response
+record      : 1
+output      : 00 00 00 00
+expected    : FF<FF<FF<FF<
+
+3F00/2F06
+operation   : Test Access Condition
+message     : Wrong Expected Response
+output      : 00 00 02 10 2F 06 04 00 05 FF 55 01 02 01 30
+expected    : XX XX 08<34<2F 06 04 XX 05 XX 55 XX XX 01 64<
+operation   : Test 3G Status (3)
+message     : Wrong File Size
+message     : Wrong File Record Size
+message     : Wrong Number of Record
+
+
+Process finished with exit code 0
