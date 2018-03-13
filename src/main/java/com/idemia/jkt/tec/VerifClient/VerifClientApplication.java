@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import com.idemia.jkt.tec.VerifClient.view.AboutController;
 import com.idemia.jkt.tec.VerifClient.view.EditLiteralsController;
 import com.idemia.jkt.tec.VerifClient.view.RootLayoutController;
 import com.idemia.jkt.tec.VerifClient.view.SelectReaderController;
@@ -15,6 +16,7 @@ import com.idemia.jkt.tec.VerifClient.view.VerifClientController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -31,7 +33,8 @@ public class VerifClientApplication extends Application {
 	private Stage primaryStage;
 	private Stage editLiteralsDialogStage;
 	private Stage selectReaderDialogStage;
-
+	private Stage aboutDialogStage;
+	
 	public static void main(String[] args) {
 		launch(VerifClientApplication.class, args);
 	}
@@ -67,7 +70,8 @@ public class VerifClientApplication extends Application {
 			
 			Scene scene = new Scene(rootLayout);
 			
-			primaryStage.setScene(scene);
+			primaryStage.setScene(scene);			
+			primaryStage.getIcons().add(new Image(VerifClientApplication.class.getResourceAsStream("view/fv_icon.png")));
 			primaryStage.show();
 			
 		} catch (IOException e) {
@@ -144,6 +148,32 @@ public class VerifClientApplication extends Application {
 		}
 	}
 	
+	public void showAbout() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("view/About.fxml"));
+			loader.setControllerFactory(springContext::getBean);
+			AnchorPane about = (AnchorPane) loader.load();
+			
+			// give controller access to main app
+			AboutController controller = loader.getController();
+			controller.setMainApp(this);
+			
+			// create dialog
+			aboutDialogStage = new Stage();
+			aboutDialogStage.setTitle("About");
+			aboutDialogStage.setResizable(false);
+			aboutDialogStage.initModality(Modality.WINDOW_MODAL);
+			aboutDialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(about);
+			aboutDialogStage.setScene(scene);
+			
+			aboutDialogStage.showAndWait();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
@@ -154,6 +184,10 @@ public class VerifClientApplication extends Application {
 
 	public Stage getSelectReaderDialogStage() {
 		return selectReaderDialogStage;
+	}
+
+	public Stage getAboutDialogStage() {
+		return aboutDialogStage;
 	}
 	
 }

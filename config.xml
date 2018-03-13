@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<verifConfig chv1Disabled="true" hexRecordNumber="false" hexSfi="true" useAdm2="true" useAdm3="false" useAdm4="false" useVariablesTxt="true">
+<verifConfig chv1Disabled="true" hexRecordNumber="false" hexSfi="true" useAdm2="true" useAdm3="false" useAdm4="false" useVariablesTxt="false">
     <codeAdm1>933F57845F706921</codeAdm1>
     <codeAdm2>933F57845F706921</codeAdm2>
     <codeAdm3>933F57845F706921</codeAdm3>
     <codeAdm4>933F57845F706921</codeAdm4>
     <codeChv1>31323334FFFFFFFF</codeChv1>
     <codeChv2>35363738FFFFFFFF</codeChv2>
-    <pathToCsv>/home/msembodo/tmp/2204.csv</pathToCsv>
+    <pathToCsv>/home/msembodo/PycharmProjects/FileVerif/test_1504ES049V03__P49.csv</pathToCsv>
     <pathToVariablesTxt>/home/msembodo/Documents/variables.txt</pathToVariablesTxt>
     <readerNumber>-1</readerNumber>
     <verifLiterals>

@@ -134,6 +134,11 @@ public class RootLayoutController {
 	}
 	
 	@FXML
+	private void handleMenuAbout() {
+		application.showAbout();
+	}
+	
+	@FXML
 	private void handleMenuRun() {
 		// save configurations
 		handleMenuSaveConfiguration();
