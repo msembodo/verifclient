@@ -4,6 +4,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.idemia.jkt.tec.VerifClient.model.customapdu.CustomApdu;
+
 @XmlRootElement
 public class VerifConfig {
 	
@@ -32,12 +34,15 @@ public class VerifConfig {
 	private String pathToCsv;
 	private String pathToVariablesTxt;
 	
+	// custom apdu
+	private CustomApdu customApdu;
+	
 	public VerifConfig() {}
 
 	public VerifConfig(int readerNumber, boolean chv1Disabled, boolean hexSfi, boolean hexRecordNumber, boolean useVariablesTxt,
 			boolean useAdm2, boolean useAdm3, boolean useAdm4, String codeAdm1, String codeAdm2, String codeAdm3,
-			String codeAdm4, String codeChv1, String codeChv2, VerifLiterals verifLiterals, String pathToCsv,
-			String pathToVariablesTxt) {
+			String codeAdm4, String codeChv1, String codeChv2, VerifLiterals verifLiterals, CustomApdu customApdu, 
+			String pathToCsv, String pathToVariablesTxt) {
 		
 		this.readerNumber = readerNumber;
 		this.chv1Disabled = chv1Disabled;
@@ -54,6 +59,7 @@ public class VerifConfig {
 		this.codeChv1 = codeChv1;
 		this.codeChv2 = codeChv2;
 		this.verifLiterals = verifLiterals;
+		this.customApdu = customApdu;
 		this.pathToCsv = pathToCsv;
 		this.pathToVariablesTxt = pathToVariablesTxt;
 	}
@@ -209,6 +215,15 @@ public class VerifConfig {
 	@XmlElement
 	public void setVerifLiterals(VerifLiterals verifLiterals) {
 		this.verifLiterals = verifLiterals;
+	}
+
+	public CustomApdu getCustomApdu() {
+		return customApdu;
+	}
+	
+	@XmlElement
+	public void setCustomApdu(CustomApdu customApdu) {
+		this.customApdu = customApdu;
 	}
 	
 }

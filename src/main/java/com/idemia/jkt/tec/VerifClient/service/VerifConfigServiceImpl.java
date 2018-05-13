@@ -22,7 +22,9 @@ import org.springframework.stereotype.Service;
 import com.google.gson.Gson;
 import com.idemia.jkt.tec.VerifClient.model.VerifConfig;
 import com.idemia.jkt.tec.VerifClient.model.VerifLiterals;
+import com.idemia.jkt.tec.VerifClient.model.customapdu.CustomApdu;
 import com.idemia.jkt.tec.VerifClient.response.VerificationResponse;
+import com.idemia.jkt.tec.VerifClient.view.CustomAPDUController;
 import com.idemia.jkt.tec.VerifClient.view.RootLayoutController;
 
 @Service
@@ -61,6 +63,9 @@ public class VerifConfigServiceImpl implements VerifConfigService {
 	@Autowired
 	private RootLayoutController root;
 	
+	@Autowired
+	private CustomAPDUController customApduController;
+	
 	@Override
 	public VerifConfig initConfig() {
 		configFile = new File("config.xml");
@@ -75,7 +80,7 @@ public class VerifConfigServiceImpl implements VerifConfigService {
 				if (userConfig.getPathToCsv().equals(""))
 					initialStatus += " (no CSV selected)";
 				else
-					initialStatus += ( " CSV file: " + userConfig.getPathToCsv());
+					initialStatus += ( " Last CSV used: " + userConfig.getPathToCsv());
 				root.getAppStatusBar().setText(initialStatus);
 				
 				return userConfig;
@@ -123,6 +128,9 @@ public class VerifConfigServiceImpl implements VerifConfigService {
 			defaultLiterals.setsAccAND(S_ACC_AND_DEFAULT);
 			defaultLiterals.setsAccOR(S_ACC_OR_DEFAULT);
 			
+			CustomApdu defaultCustomApdu = customApduController.getDefaultApduParams();
+			
+			defaultConfig.setCustomApdu(defaultCustomApdu);
 			defaultConfig.setVerifLiterals(defaultLiterals);
 			defaultConfig.setPathToCsv(""); // set blank for default
 			defaultConfig.setPathToVariablesTxt(""); // set blank for default

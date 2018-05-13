@@ -28,6 +28,7 @@
             <items>
                   <MenuItem mnemonicParsing="false" onAction="#handleMenuSelectReader" text="Select Reader" />
                   <MenuItem mnemonicParsing="false" onAction="#handleMenuEditLiterals" text="Edit Literals" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuCustomApdu" text="Custom APDU" />
               <MenuItem mnemonicParsing="false" onAction="#handleMenuRun" text="Run" />
             </items>
           </Menu>

@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import com.idemia.jkt.tec.VerifClient.view.AboutController;
+import com.idemia.jkt.tec.VerifClient.view.CustomAPDUController;
 import com.idemia.jkt.tec.VerifClient.view.EditLiteralsController;
 import com.idemia.jkt.tec.VerifClient.view.RootLayoutController;
 import com.idemia.jkt.tec.VerifClient.view.SelectReaderController;
@@ -33,6 +34,7 @@ public class VerifClientApplication extends Application {
 	private Stage primaryStage;
 	private Stage editLiteralsDialogStage;
 	private Stage selectReaderDialogStage;
+	private Stage customApduDialogStage;
 	private Stage aboutDialogStage;
 	
 	public static void main(String[] args) {
@@ -148,6 +150,32 @@ public class VerifClientApplication extends Application {
 		}
 	}
 	
+	public void showCustomApdu() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("view/CustomAPDU.fxml"));
+			loader.setControllerFactory(springContext::getBean);
+			AnchorPane customApdu = (AnchorPane) loader.load();
+			
+			// give controller access to main app
+			CustomAPDUController controller = loader.getController();
+			controller.setMainApp(this);
+			
+			// create dialog
+			customApduDialogStage = new Stage();
+			customApduDialogStage.setTitle("Custom APDU");
+			customApduDialogStage.setResizable(false);
+			customApduDialogStage.initModality(Modality.WINDOW_MODAL);
+			customApduDialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(customApdu);
+			customApduDialogStage.setScene(scene);
+			
+			customApduDialogStage.showAndWait();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void showAbout() {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("view/About.fxml"));
@@ -184,6 +212,11 @@ public class VerifClientApplication extends Application {
 
 	public Stage getSelectReaderDialogStage() {
 		return selectReaderDialogStage;
+	}
+	
+
+	public Stage getCustomApduDialogStage() {
+		return customApduDialogStage;
 	}
 
 	public Stage getAboutDialogStage() {

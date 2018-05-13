@@ -23,24 +23,34 @@
 	-fx-background-radius: 0;
 }
 */
+
+/*
 .text-field {
 	-fx-background-radius: 0;
 }
+*/
 
+/* 
 .check-box .box {
 	-fx-background-radius: 0;
 }
+*/
 
 .tab-pane .tab-header-area .tab-header-background {
     -fx-background-color: #BDBDBD;
 }
 
+/*
 .tab-header-area .tab{
     -fx-background-radius: 0 0 0 0;
  }
+ */
  
+ /*
  .tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {-fx-focus-color: transparent}
+ */
  
+ /*
  .combo-box {
 	-fx-background-radius: 0;
 }
@@ -48,3 +58,4 @@
 .dialog-pane > .button {
 	-fx-background-radius: 0;
 }
+*/

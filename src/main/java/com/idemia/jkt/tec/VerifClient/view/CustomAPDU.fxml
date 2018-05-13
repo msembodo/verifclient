@@ -1,0 +1,1059 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="350.0" prefWidth="590.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.idemia.jkt.tec.VerifClient.view.CustomAPDUController">
+   <children>
+      <TabPane layoutX="14.0" layoutY="14.0" prefHeight="473.0" prefWidth="400.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Verify 2G">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane gridLinesVisible="true" layoutX="14.0" layoutY="30.0" prefHeight="57.0" prefWidth="260.0" AnchorPane.leftAnchor="14.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="CLA">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="INS" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P1" GridPane.columnIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P2" GridPane.columnIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField disable="true" editable="false" text="A0" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField disable="true" editable="false" text="20" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify2gChv1P1" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify2gChv1P2" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="P3" GridPane.columnIndex="4">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField fx:id="txtVerify2gChv1P3" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </GridPane>
+                        <Label layoutX="14.0" layoutY="14.0" text="CHV1" AnchorPane.leftAnchor="14.0" />
+                        <GridPane gridLinesVisible="true" layoutX="310.0" layoutY="30.0" prefHeight="57.0" prefWidth="260.0" AnchorPane.rightAnchor="14.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="CLA">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="INS" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P1" GridPane.columnIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P2" GridPane.columnIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField disable="true" text="A0" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField disable="true" text="20" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify2gChv2P1" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify2gChv2P2" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify2gChv2P3" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="P3" GridPane.columnIndex="4">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </GridPane>
+                        <Label layoutX="316.0" layoutY="14.0" text="CHV2" />
+                        <Separator layoutX="14.0" layoutY="93.0" prefHeight="4.0" prefWidth="272.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+                        <GridPane gridLinesVisible="true" layoutX="12.0" layoutY="113.0" prefHeight="57.0" prefWidth="260.0" AnchorPane.leftAnchor="14.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="CLA">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="INS" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P1" GridPane.columnIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P2" GridPane.columnIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField disable="true" text="A0" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField disable="true" text="20" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify2gAdm1P1" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify2gAdm1P2" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify2gAdm1P3" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="P3" GridPane.columnIndex="4">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </GridPane>
+                        <Label layoutX="13.0" layoutY="97.0" text="ADM1" AnchorPane.leftAnchor="14.0" />
+                        <GridPane gridLinesVisible="true" layoutX="309.0" layoutY="113.0" prefHeight="57.0" prefWidth="260.0" AnchorPane.rightAnchor="14.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="CLA">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="INS" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P1" GridPane.columnIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P2" GridPane.columnIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField disable="true" text="A0" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField disable="true" text="20" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify2gAdm2P1" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify2gAdm2P2" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify2gAdm2P3" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="P3" GridPane.columnIndex="4">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </GridPane>
+                        <Label layoutX="315.0" layoutY="97.0" text="ADM2" />
+                        <Separator layoutX="14.0" layoutY="258.0" prefHeight="5.0" prefWidth="560.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+                        <GridPane gridLinesVisible="true" layoutX="14.0" layoutY="191.0" prefHeight="57.0" prefWidth="260.0" AnchorPane.leftAnchor="14.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="CLA">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="INS" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P1" GridPane.columnIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P2" GridPane.columnIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField disable="true" text="A0" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField disable="true" text="20" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify2gAdm3P1" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify2gAdm3P2" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify2gAdm3P3" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="P3" GridPane.columnIndex="4">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </GridPane>
+                        <Label layoutX="12.0" layoutY="175.0" text="ADM3" AnchorPane.leftAnchor="14.0" />
+                        <GridPane gridLinesVisible="true" layoutX="316.0" layoutY="192.0" prefHeight="57.0" prefWidth="260.0" AnchorPane.rightAnchor="14.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="CLA">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="INS" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P1" GridPane.columnIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P2" GridPane.columnIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField disable="true" text="A0" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField disable="true" text="20" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify2gAdm4P1" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify2gAdm4P2" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify2gAdm4P3" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="P3" GridPane.columnIndex="4">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </GridPane>
+                        <Label layoutX="315.0" layoutY="175.0" text="ADM4" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Verify 3G">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane gridLinesVisible="true" layoutX="14.0" layoutY="30.0" prefHeight="57.0" prefWidth="260.0" AnchorPane.leftAnchor="14.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="CLA">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="INS" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P1" GridPane.columnIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P2" GridPane.columnIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField disable="true" editable="false" text="00" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField disable="true" editable="false" text="20" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify3gGpin1P1" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify3gGpin1P2" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="P3" GridPane.columnIndex="4">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField fx:id="txtVerify3gGpin1P3" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </GridPane>
+                        <Label layoutX="14.0" layoutY="14.0" text="Global PIN 1" AnchorPane.leftAnchor="14.0" />
+                        <GridPane gridLinesVisible="true" layoutX="310.0" layoutY="30.0" prefHeight="57.0" prefWidth="260.0" AnchorPane.rightAnchor="14.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="CLA">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="INS" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P1" GridPane.columnIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P2" GridPane.columnIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField disable="true" text="00" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField disable="true" text="20" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify3gLpin1P1" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify3gLpin1P2" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify3gLpin1P3" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="P3" GridPane.columnIndex="4">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </GridPane>
+                        <Label layoutX="316.0" layoutY="14.0" text="Local PIN 1" />
+                        <Separator layoutX="14.0" layoutY="93.0" prefHeight="4.0" prefWidth="272.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+                        <GridPane gridLinesVisible="true" layoutX="12.0" layoutY="113.0" prefHeight="57.0" prefWidth="260.0" AnchorPane.leftAnchor="14.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="CLA">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="INS" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P1" GridPane.columnIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P2" GridPane.columnIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField disable="true" text="00" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField disable="true" text="20" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify3gAdm1P1" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify3gAdm1P2" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify3gAdm1P3" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="P3" GridPane.columnIndex="4">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </GridPane>
+                        <Label layoutX="13.0" layoutY="97.0" text="ADM1" AnchorPane.leftAnchor="14.0" />
+                        <GridPane gridLinesVisible="true" layoutX="309.0" layoutY="113.0" prefHeight="57.0" prefWidth="260.0" AnchorPane.rightAnchor="14.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="CLA">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="INS" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P1" GridPane.columnIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P2" GridPane.columnIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField disable="true" text="00" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField disable="true" text="20" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify3gAdm2P1" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify3gAdm2P2" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify3gAdm2P3" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="P3" GridPane.columnIndex="4">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </GridPane>
+                        <Label layoutX="315.0" layoutY="97.0" text="ADM2" />
+                        <Separator layoutX="14.0" layoutY="258.0" prefHeight="5.0" prefWidth="560.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+                        <GridPane gridLinesVisible="true" layoutX="14.0" layoutY="191.0" prefHeight="57.0" prefWidth="260.0" AnchorPane.leftAnchor="14.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="CLA">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="INS" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P1" GridPane.columnIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P2" GridPane.columnIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField disable="true" text="00" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField disable="true" text="20" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify3gAdm3P1" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify3gAdm3P2" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify3gAdm3P3" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="P3" GridPane.columnIndex="4">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </GridPane>
+                        <Label layoutX="12.0" layoutY="175.0" text="ADM3" AnchorPane.leftAnchor="14.0" />
+                        <GridPane gridLinesVisible="true" layoutX="316.0" layoutY="192.0" prefHeight="57.0" prefWidth="260.0" AnchorPane.rightAnchor="14.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="CLA">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="INS" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P1" GridPane.columnIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="P2" GridPane.columnIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField disable="true" text="00" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField disable="true" text="20" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify3gAdm4P1" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify3gAdm4P2" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="txtVerify3gAdm4P3" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="Monospaced Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="P3" GridPane.columnIndex="4">
+                                 <GridPane.margin>
+                                    <Insets left="4.0" />
+                                 </GridPane.margin>
+                              </Label>
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </GridPane>
+                        <Label layoutX="315.0" layoutY="175.0" text="ADM4" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <ButtonBar layoutX="86.0" layoutY="467.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="6.0" AnchorPane.rightAnchor="14.0">
+        <buttons>
+            <Button mnemonicParsing="false" onAction="#handleButtonCancel" text="Cancel" />
+            <Button mnemonicParsing="false" onAction="#handleButtonOk" text="OK" />
+        </buttons>
+      </ButtonBar>
+      <Button layoutX="14.0" layoutY="321.0" mnemonicParsing="false" onAction="#handleButtonSetDefault" text="Set default" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" />
+   </children>
+</AnchorPane>

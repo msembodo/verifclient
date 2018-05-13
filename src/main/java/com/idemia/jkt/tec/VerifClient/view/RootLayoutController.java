@@ -134,108 +134,124 @@ public class RootLayoutController {
 	}
 	
 	@FXML
+	private void handleMenuCustomApdu() {
+		application.showCustomApdu();
+	}
+	
+	@FXML
 	private void handleMenuAbout() {
 		application.showAbout();
 	}
 	
 	@FXML
 	private void handleMenuRun() {
-		// save configurations
-		handleMenuSaveConfiguration();
-		
-		// ask user confirmation
-		Alert runAlert = new Alert(AlertType.CONFIRMATION);
-		runAlert.initModality(Modality.APPLICATION_MODAL);
-		runAlert.initOwner(application.getPrimaryStage());
-		runAlert.setTitle("Confirmation");
-		runAlert.setHeaderText("Run verification?");
-		runAlert.setContentText("This will verify card against CSV.");
-		Optional<ButtonType> result = runAlert.showAndWait();
-		
-		if (result.get() == ButtonType.OK) {
-			// make user wait as verification executes
-			vClient.getMaskerPane().setText("Running verification. Please wait..");
-			// display masker pane
-			vClient.getMaskerPane().setVisible(true);
-			menuBar.setDisable(true);
-			appStatusBar.setDisable(true);
+		if (selectedCsv == null) {
+			Alert noCsvAlert = new Alert(AlertType.WARNING);
+			noCsvAlert.initModality(Modality.APPLICATION_MODAL);
+			noCsvAlert.initOwner(application.getPrimaryStage());
+			noCsvAlert.setTitle("Warning");
+			noCsvAlert.setHeaderText("No CSV selected");
+			noCsvAlert.setContentText("Verification will not proceed.");
+			noCsvAlert.showAndWait();
 			
-			// use threads to avoid application freeze
-			Task<Void> task = new Task<Void>() {
-
-				@Override
-				protected Void call() throws Exception {
-					// call verif API
-					verificationResponse = verifConfigService.runVerif();
-					if (verificationResponse.isVerificationSuccess())
-						logger.info(verificationResponse.toJson());
-					else
-						logger.error(verificationResponse.toJson());
-					
-					return null;
-				}
-
-				@Override
-				protected void succeeded() {
-					super.succeeded();
-					// dismiss masker pane
-					vClient.getMaskerPane().setVisible(false);
-					menuBar.setDisable(false);
-					appStatusBar.setDisable(false);
-					
-					// update status bar
-					if (verificationResponse.isVerificationSuccess()) {
-						appStatusBar.setText("Verification success.");
+		} else {
+			// save configurations
+			handleMenuSaveConfiguration();
+			
+			// ask user confirmation
+			Alert runAlert = new Alert(AlertType.CONFIRMATION);
+			runAlert.initModality(Modality.APPLICATION_MODAL);
+			runAlert.initOwner(application.getPrimaryStage());
+			runAlert.setTitle("Confirmation");
+			runAlert.setHeaderText("Run verification?");
+			runAlert.setContentText("This will verify card against CSV.");
+			Optional<ButtonType> result = runAlert.showAndWait();
+			
+			if (result.get() == ButtonType.OK) {
+				// make user wait as verification executes
+				vClient.getMaskerPane().setText("Running verification. Please wait..");
+				// display masker pane
+				vClient.getMaskerPane().setVisible(true);
+				menuBar.setDisable(true);
+				appStatusBar.setDisable(true);
+				
+				// use threads to avoid application freeze
+				Task<Void> task = new Task<Void>() {
+	
+					@Override
+					protected Void call() throws Exception {
+						// call verif API
+						verificationResponse = verifConfigService.runVerif();
+						if (verificationResponse.isVerificationSuccess())
+							logger.info(verificationResponse.toJson());
+						else
+							logger.error(verificationResponse.toJson());
 						
-						// show notification
-						Notifications.create().title("VerifClient").text("Verification complete.").showInformation();
+						return null;
+					}
+	
+					@Override
+					protected void succeeded() {
+						super.succeeded();
+						// dismiss masker pane
+						vClient.getMaskerPane().setVisible(false);
+						menuBar.setDisable(false);
+						appStatusBar.setDisable(false);
 						
-						// display error report
-						vClient.getWebErrorReport().setDisable(false);
-						WebEngine webEngine = vClient.getWebErrorReport().getEngine();
-						String errorReportPath = selectedCsv.getParent();
-						String errorReportFileName = selectedCsv.getName().substring(0, selectedCsv.getName().indexOf(".")) + "_error.html";
-						logger.info("Error report file: " + errorReportPath + File.separator + errorReportFileName);
-						File errorReportFile = new File(errorReportPath + File.separator + errorReportFileName);
-						try {
-							URL urlErrorReport = errorReportFile.toURI().toURL();
-							webEngine.load(urlErrorReport.toString());
-						} catch (MalformedURLException e) {
-							e.printStackTrace();
+						// update status bar
+						if (verificationResponse.isVerificationSuccess()) {
+							appStatusBar.setText("Verification success.");
+							
+							// show notification
+							Notifications.create().title("VerifClient").text("Verification complete.").showInformation();
+							
+							// display error report
+							vClient.getWebErrorReport().setDisable(false);
+							WebEngine webEngine = vClient.getWebErrorReport().getEngine();
+							String errorReportPath = selectedCsv.getParent();
+							String errorReportFileName = selectedCsv.getName().substring(0, selectedCsv.getName().indexOf(".")) + "_error.html";
+							logger.info("Error report file: " + errorReportPath + File.separator + errorReportFileName);
+							File errorReportFile = new File(errorReportPath + File.separator + errorReportFileName);
+							try {
+								URL urlErrorReport = errorReportFile.toURI().toURL();
+								webEngine.load(urlErrorReport.toString());
+							} catch (MalformedURLException e) {
+								e.printStackTrace();
+							}
+							
+							// display run log
+							vClient.getTxtRunLog().setDisable(false);
+							String runLogFileName = "run.log";
+							try (BufferedReader br = new BufferedReader(new FileReader(runLogFileName))) {
+								StringBuffer sb = new StringBuffer();
+								String currentLine;
+								while ((currentLine = br.readLine()) != null)
+									sb.append(currentLine + "\n");
+								vClient.getTxtRunLog().setText(sb.toString());
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
 						}
-						
-						// display run log
-						vClient.getTxtRunLog().setDisable(false);
-						String runLogFileName = "run.log";
-						try (BufferedReader br = new BufferedReader(new FileReader(runLogFileName))) {
-							StringBuffer sb = new StringBuffer();
-							String currentLine;
-							while ((currentLine = br.readLine()) != null)
-								sb.append(currentLine + "\n");
-							vClient.getTxtRunLog().setText(sb.toString());
-						} catch (IOException e) {
-							e.printStackTrace();
+						else {
+							appStatusBar.setText("Verification fails.");
+							
+							// show error notification
+							Notifications.create().title("VerifClient").text("Verification fails.").showError();
+							
+							Alert verifAlert = new Alert(AlertType.ERROR);
+							verifAlert.initModality(Modality.APPLICATION_MODAL);
+							verifAlert.initOwner(application.getPrimaryStage());
+							verifAlert.setTitle("Verification error");
+							verifAlert.setHeaderText("Failed to perform verification");
+							verifAlert.setContentText(verificationResponse.getMessage());
+							verifAlert.showAndWait();
 						}
 					}
-					else {
-						appStatusBar.setText("Verification fails.");
-						
-						// show error notification
-						Notifications.create().title("VerifClient").text("Verification fails.").showError();
-						
-						Alert verifAlert = new Alert(AlertType.ERROR);
-						verifAlert.initModality(Modality.APPLICATION_MODAL);
-						verifAlert.initOwner(application.getPrimaryStage());
-						verifAlert.setTitle("Verification error");
-						verifAlert.setHeaderText("Failed to perform verification");
-						verifAlert.setContentText(verificationResponse.getMessage());
-						verifAlert.showAndWait();
-					}
-				}
-			};
-			
-			Thread verifThread = new Thread(task);
-			verifThread.start(); // run in background
+				};
+				
+				Thread verifThread = new Thread(task);
+				verifThread.start(); // run in background
+			}
 		}
 	}
 
