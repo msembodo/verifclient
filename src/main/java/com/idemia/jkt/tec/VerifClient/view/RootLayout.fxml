@@ -6,7 +6,7 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane fx:id="rootBorderPane" prefHeight="768.0" prefWidth="1366.0" stylesheets="@light.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.idemia.jkt.tec.VerifClient.view.RootLayoutController">
+<BorderPane fx:id="rootBorderPane" prefHeight="768.0" prefWidth="1366.0" stylesheets="@light.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.idemia.jkt.tec.VerifClient.view.RootLayoutController">
    <top>
       <MenuBar fx:id="menuBar">
         <menus>
@@ -15,8 +15,8 @@
                   <MenuItem mnemonicParsing="false" onAction="#handleMenuLoadCsv" text="Load CSV" />
                   <Menu mnemonicParsing="false" text="Import From">
                     <items>
-                      <MenuItem disable="true" mnemonicParsing="false" text="ex-Morpho XML" />
-                        <MenuItem disable="true" mnemonicParsing="false" text="SIMPML" />
+                      <MenuItem mnemonicParsing="false" onAction="#handleMenuImportFromExMorphoXml" text="ex-Morpho XML" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleMenuImportFromUxp" text="SIMPML" />
                     </items>
                   </Menu>
                   <MenuItem mnemonicParsing="false" onAction="#handleMenuSaveConfiguration" text="Save Configuration" />

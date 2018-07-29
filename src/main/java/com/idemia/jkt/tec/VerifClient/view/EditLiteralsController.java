@@ -62,58 +62,65 @@ public class EditLiteralsController {
 	
 	@FXML
 	private void initialize() {
-		txtTr.setFont(Font.font("Monospaced"));
+		Font fixedWidthFont;
+
+		if (Font.getFamilies().contains("Consolas"))
+			fixedWidthFont = Font.font("Consolas");
+		else
+			fixedWidthFont = Font.font("Monospaced");
+
+		txtTr.setFont(fixedWidthFont);
 		txtTr.setText(root.getVerifConfig().getVerifLiterals().getsFileStructTR());
 		
-		txtLf.setFont(Font.font("Monospaced"));
+		txtLf.setFont(fixedWidthFont);
 		txtLf.setText(root.getVerifConfig().getVerifLiterals().getsFileStructLF());
 		
-		txtCy.setFont(Font.font("Monospaced"));
+		txtCy.setFont(fixedWidthFont);
 		txtCy.setText(root.getVerifConfig().getVerifLiterals().getsFileStructCY());
 		
-		txtLk.setFont(Font.font("Monospaced"));
+		txtLk.setFont(fixedWidthFont);
 		txtLk.setText(root.getVerifConfig().getVerifLiterals().getsFileStructLK());
 		
-		txtAlw.setFont(Font.font("Monospaced"));
+		txtAlw.setFont(fixedWidthFont);
 		txtAlw.setText(root.getVerifConfig().getVerifLiterals().getsAccALW());
 		
-		txtChv1.setFont(Font.font("Monospaced"));
+		txtChv1.setFont(fixedWidthFont);
 		txtChv1.setText(root.getVerifConfig().getVerifLiterals().getsAccCHV1());
 		
-		txtChv2.setFont(Font.font("Monospaced"));
+		txtChv2.setFont(fixedWidthFont);
 		txtChv2.setText(root.getVerifConfig().getVerifLiterals().getsAccCHV2());
 		
-		txtAdm1.setFont(Font.font("Monospaced"));
+		txtAdm1.setFont(fixedWidthFont);
 		txtAdm1.setText(root.getVerifConfig().getVerifLiterals().getsAccADM1());
 		
-		txtAdm2.setFont(Font.font("Monospaced"));
+		txtAdm2.setFont(fixedWidthFont);
 		txtAdm2.setText(root.getVerifConfig().getVerifLiterals().getsAccADM2());
 		
-		txtAdm3.setFont(Font.font("Monospaced"));
+		txtAdm3.setFont(fixedWidthFont);
 		txtAdm3.setText(root.getVerifConfig().getVerifLiterals().getsAccADM3());
 		
-		txtAdm4.setFont(Font.font("Monospaced"));
+		txtAdm4.setFont(fixedWidthFont);
 		txtAdm4.setText(root.getVerifConfig().getVerifLiterals().getsAccADM4());
 		
-		txtAdm5.setFont(Font.font("Monospaced"));
+		txtAdm5.setFont(fixedWidthFont);
 		txtAdm5.setText(root.getVerifConfig().getVerifLiterals().getsAccADM5());
 		
-		txtAdm6.setFont(Font.font("Monospaced"));
+		txtAdm6.setFont(fixedWidthFont);
 		txtAdm6.setText(root.getVerifConfig().getVerifLiterals().getsAccADM6());
 		
-		txtAdm7.setFont(Font.font("Monospaced"));
+		txtAdm7.setFont(fixedWidthFont);
 		txtAdm7.setText(root.getVerifConfig().getVerifLiterals().getsAccADM7());
 		
-		txtAdm8.setFont(Font.font("Monospaced"));
+		txtAdm8.setFont(fixedWidthFont);
 		txtAdm8.setText(root.getVerifConfig().getVerifLiterals().getsAccADM8());
 		
-		txtNev.setFont(Font.font("Monospaced"));
+		txtNev.setFont(fixedWidthFont);
 		txtNev.setText(root.getVerifConfig().getVerifLiterals().getsAccNEV());
 		
-		txtAnd.setFont(Font.font("Monospaced"));
+		txtAnd.setFont(fixedWidthFont);
 		txtAnd.setText(root.getVerifConfig().getVerifLiterals().getsAccAND());
 		
-		txtOr.setFont(Font.font("Monospaced"));
+		txtOr.setFont(fixedWidthFont);
 		txtOr.setText(root.getVerifConfig().getVerifLiterals().getsAccOR());
 	}
 	

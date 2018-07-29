@@ -1,3 +1,9 @@
+v0.0.3:
+Author: Martyono Sembodo
+* Added feature for importing SIM Alliance SIMPML & ex-Morpho technical report
+* Minor UI refinements
+* Quick user guide
+
 v0.0.2:
 Author: Martyono Sembodo
 * Show warning message if no CSV is selected
@@ -9,4 +15,3 @@ Author: Martyono Sembodo
 * Define connectivity functions to verif server
 * Define request-response mechanism
 * Define model for config.xml
-* Tested with FileVerif v1.3.0

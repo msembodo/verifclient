@@ -36,7 +36,7 @@ public class VerifClientApplication extends Application {
 	private Stage selectReaderDialogStage;
 	private Stage customApduDialogStage;
 	private Stage aboutDialogStage;
-	
+
 	public static void main(String[] args) {
 		launch(VerifClientApplication.class, args);
 	}

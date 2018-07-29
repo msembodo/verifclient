@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css" >
+
+    <title>HOWTO</title>
+  	</head>
+  	<body>
+  	<div class="container">
+  		<div class="row mt-4"></div>
+	    <div class="jumbotron text-white bg-info">
+		  	<h1 class="display-4">VerifClient</h1>
+		  	<p class="lead">TEC file verification tool. It verifies card against customer specification.</p>	
+		  	<hr class="my-4">	
+		  	<p>Below is quick guide for some basic functionalities.</p>
+		</div>
+		<div class="card bg-light mb-3">
+		  <div class="card-body">
+		    <h5 class="card-title">Verify card against customer specification</h5>
+		    <h6 class="card-subtitle mb-2 text-muted">Manually created CSV</h6>
+		    <p class="card-text">
+		    	<ul>
+		    		<li>Create CSV file (in predefined format) from customer specification.</li>
+		    		<li><strong>File</strong> > <strong>Load CSV</strong></li>
+		    		<li>Browse for .csv file and click <strong>Open</strong></li>
+		    		<li>Selected CSV will be indicated in the window bar.</li>
+		    		<li>(Optional) <strong>Tools</strong> > <strong>Edit Literals</strong> for adjusting labels of EF structure, types, and access conditions as per the CSV.</li>
+		    		<li>(Optional) <strong>Tools</strong> > <strong>Custom APDU</strong> if some APDU parameters need to be changed.</li>
+		    		<li>Configure <strong>Options</strong> and <strong>Security Codes</strong> to match card profile.</li>
+		    		<li><strong>Tools</strong> > <strong>Run</strong> and click <strong>OK</strong> on confirmation dialog.</li>
+		    		<li>Verification will then proceed and result or errors (if any) will be displayed under <strong>Error Report</strong> tab.</li>
+		    	</ul>
+		    </p>
+		  </div>
+		</div>
+		<div class="card bg-light mb-3">
+		  <div class="card-body">
+		    <h5 class="card-title">Verify card against SIM Alliance's SIMPML</h5>
+		    <h6 class="card-subtitle mb-2 text-muted">(.uxp)</h6>
+		    <p class="card-text">
+				<ul>
+			  		<li><strong>File</strong> > <strong>Import From</strong> > <strong>SIMPML</strong></li>
+			  		<li>Browse for .uxp file and click <strong>Open</strong></li>
+			  		<li>Selected UXP will be converted to CSV and indicated in window bar as IMPORTED.</li>
+			  		<li>(Optional) <strong>Tools</strong> > <strong>Custom APDU</strong> if some APDU parameters need to be changed.</li>
+			  		<li>Configure <strong>Options</strong> and <strong>Security Codes</strong> to match card profile.</li>
+			  		<li><strong>Tools</strong> > <strong>Run</strong> and click <strong>OK</strong> on confirmation dialog.</li>
+			  		<li>Verification will then proceed and result or errors (if any) will be displayed under <strong>Error Report</strong> tab.</li>
+		  		</ul>
+			</p>
+		  </div>
+		</div>
+		<div class="card bg-light mb-3">
+		  <div class="card-body">
+		    <h5 class="card-title">Verify card against ex-Morpho SCDL report</h5>
+		    <h6 class="card-subtitle mb-2 text-muted">exported from Card Designer</h6>
+		    <p class="card-text">
+			  <ul>
+				  <li><strong>File</strong> > <strong>Import From</strong> > <strong>ex-Morpho XML</strong></li>
+				  <li>Browse for .xml file and click <strong>Open</strong></li>
+				  <li>Selected XML will be converted to CSV and indicated in window bar as IMPORTED.</li>
+				  <li>(Optional) <strong>Tools</strong> > <strong>Custom APDU</strong> if some APDU parameters need to be changed.</li>
+				  <li>Configure <strong>Options</strong> and <strong>Security Codes</strong> to match card profile.</li>
+				  <li><strong>Tools</strong> > <strong>Run</strong> and click <strong>OK</strong> on confirmation dialog.</li>
+				  <li>Verification will then proceed and result or errors (if any) will be displayed under <strong>Error Report</strong> tab.</li>
+			  </ul>
+			  NOTE: import may fail if the XML generated from Card Designer was manually edited by hand with some weird characters added; raising encoding exception.
+			</p>
+		  </div>
+		</div>
+	</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.js"></script>
+  </body>
+</html>

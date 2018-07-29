@@ -1,7 +1,11 @@
 package com.idemia.jkt.tec.VerifClient.view;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 
+import javafx.scene.control.*;
+import javafx.scene.web.WebEngine;
 import org.apache.log4j.Logger;
 import org.controlsfx.control.MaskerPane;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +16,6 @@ import com.idemia.jkt.tec.VerifClient.VerifClientApplication;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.scene.web.WebView;
@@ -72,7 +72,9 @@ public class VerifClientController {
 	private WebView webErrorReport;
 	@FXML
 	private TextArea txtRunLog;
-	
+	@FXML
+    private TabPane logReportTabPane;
+
 	public VerifClientController() {}
 	
 	public void setMainApp(VerifClientApplication application) {
@@ -81,6 +83,8 @@ public class VerifClientController {
 	
 	@FXML
 	private void initialize() {
+		Font fixedWidthFont;
+
 		chkPin1Disabled.setSelected(root.getVerifConfig().isChv1Disabled());
 		chkHexSfi.setSelected(root.getVerifConfig().isHexSfi());
 		chkHexRecordNumber.setSelected(root.getVerifConfig().isHexRecordNumber());
@@ -94,39 +98,44 @@ public class VerifClientController {
 		// 'use variables.txt' is disabled by default
 		txtVariables.setDisable(true);
 		btnVariables.setDisable(true);
+
+		if (Font.getFamilies().contains("Consolas"))
+			fixedWidthFont = Font.font("Consolas");
+		else
+			fixedWidthFont = Font.font("Monospaced");
 		
 		chkUseVariablesTxt.setSelected(root.getVerifConfig().isUseVariablesTxt());
-		txtVariables.setFont(Font.font("Monospaced"));
+		txtVariables.setFont(fixedWidthFont);
 		txtVariables.setText(root.getVerifConfig().getPathToVariablesTxt());
 		if (chkUseVariablesTxt.isSelected()) {
 			txtVariables.setDisable(false);
 			btnVariables.setDisable(false);
 		}
-		
+
 		chkAdm2.setSelected(root.getVerifConfig().isUseAdm2());
 		chkAdm3.setSelected(root.getVerifConfig().isUseAdm3());
 		chkAdm4.setSelected(root.getVerifConfig().isUseAdm4());
-		txtAdm1.setFont(Font.font("Monospaced"));
+		txtAdm1.setFont(fixedWidthFont);
 		txtAdm1.setText(root.getVerifConfig().getCodeAdm1());
 		
-		txtAdm2.setFont(Font.font("Monospaced"));
+		txtAdm2.setFont(fixedWidthFont);
 		txtAdm2.setText(root.getVerifConfig().getCodeAdm2());
 		if (chkAdm2.isSelected())
 			txtAdm2.setDisable(false);
 		
-		txtAdm3.setFont(Font.font("Monospaced"));
+		txtAdm3.setFont(fixedWidthFont);
 		txtAdm3.setText(root.getVerifConfig().getCodeAdm3());
 		if (chkAdm3.isSelected())
 			txtAdm3.setDisable(false);
 		
-		txtAdm4.setFont(Font.font("Monospaced"));
+		txtAdm4.setFont(fixedWidthFont);
 		txtAdm4.setText(root.getVerifConfig().getCodeAdm4());
 		if (chkAdm4.isSelected())
 			txtAdm4.setDisable(false);
 		
-		txtChv1.setFont(Font.font("Monospaced"));
+		txtChv1.setFont(fixedWidthFont);
 		txtChv1.setText(root.getVerifConfig().getCodeChv1());
-		txtChv2.setFont(Font.font("Monospaced"));
+		txtChv2.setFont(fixedWidthFont);
 		txtChv2.setText(root.getVerifConfig().getCodeChv2());
 		
 		chkUseVariablesTxt.selectedProperty().addListener(new ChangeListener<Boolean>() {
@@ -178,10 +187,14 @@ public class VerifClientController {
 		stackPane.getChildren().add(maskerPane);
 		
 		// control for displaying error report
-		webErrorReport.setDisable(true);
+		WebEngine webEngine = webErrorReport.getEngine();
+
+		// display quick guide
+		URL urlHowto = this.getClass().getResource("/com/idemia/jkt/tec/VerifClient/view/howto_local.html");
+		webEngine.load(urlHowto.toString());
 		
 		// control for displaying run log
-		txtRunLog.setFont(Font.font("Monospaced"));
+		txtRunLog.setFont(fixedWidthFont);
 		txtRunLog.setEditable(false);
 		txtRunLog.setDisable(true);
 	}
@@ -232,4 +245,7 @@ public class VerifClientController {
 		return txtRunLog;
 	}
 
+    public TabPane getLogReportTabPane() {
+        return logReportTabPane;
+    }
 }

@@ -13,6 +13,8 @@ import javax.smartcardio.CardException;
 import javax.smartcardio.CardTerminal;
 import javax.smartcardio.TerminalFactory;
 
+import com.idemia.jkt.tec.VerifClient.response.ConverterResponse;
+import javafx.scene.control.*;
 import org.apache.log4j.Logger;
 import org.controlsfx.control.Notifications;
 import org.controlsfx.control.StatusBar;
@@ -28,12 +30,7 @@ import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.*;
 import javafx.geometry.Orientation;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.Separator;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.web.WebEngine;
 import javafx.stage.FileChooser;
@@ -49,6 +46,7 @@ public class RootLayoutController {
 	private VerifConfig verifConfig;
 	private TerminalFactory terminalFactory;
 	private VerificationResponse verificationResponse;
+	private ConverterResponse converterResponse;
 	private File selectedCsv;
 	
 	@Autowired
@@ -114,6 +112,176 @@ public class RootLayoutController {
 			verifConfig.setPathToCsv(selectedCsv.getAbsolutePath());
 			application.getPrimaryStage().setTitle("VerifClient - " + selectedCsv.getAbsolutePath()); // update window bar
 			appStatusBar.setText("CSV file selected: " + selectedCsv.getAbsolutePath()); // update status bar
+		}
+	}
+
+	@FXML
+	private void handleMenuImportFromUxp() {
+		// user select uxp
+		FileChooser uxpChooser = new FileChooser();
+		uxpChooser.setTitle("Select UXP");
+		uxpChooser.getExtensionFilters().addAll(new ExtensionFilter("SIMPML document", "*.uxp"));
+		File selectedUxp = uxpChooser.showOpenDialog(application.getPrimaryStage());
+		if (selectedUxp != null) {
+			logger.info("UXP selected: " + selectedUxp.getAbsolutePath());
+			// make user wait as uxp conversion executes
+			vClient.getMaskerPane().setText("Converting UXP. Please wait..");
+			// display masker pane
+			vClient.getMaskerPane().setVisible(true);
+			menuBar.setDisable(true);
+			appStatusBar.setDisable(true);
+
+			// use threads to avoid application freeze
+			Task<Void> task = new Task<Void>() {
+				@Override
+				protected Void call() throws Exception {
+					// call conversion API
+					converterResponse = verifConfigService.convertUxp(selectedUxp.getAbsolutePath());
+					if (converterResponse.isConvertSuccess())
+						logger.info(converterResponse.toJson());
+					else
+						logger.error(converterResponse.toJson());
+
+					return null;
+				}
+
+				@Override
+				protected void succeeded() {
+					super.succeeded();
+					// dismiss masker pane
+					vClient.getMaskerPane().setVisible(false);
+					menuBar.setDisable(false);
+					appStatusBar.setDisable(false);
+
+					// update status bar
+					if (converterResponse.isConvertSuccess()) {
+						appStatusBar.setText(converterResponse.getMessage());
+
+						// show notification
+						Notifications.create().title("VerifClient").text("UXP converted successfully").showInformation();
+
+						selectedCsv = new File(converterResponse.getGeneratedCsv());
+						verifConfig.setPathToCsv(selectedCsv.getAbsolutePath()); // update verif config
+						application.getPrimaryStage().setTitle("VerifClient - " + converterResponse.getGeneratedCsv() + " (IMPORTED)");
+
+						// display converter log
+						vClient.getTxtRunLog().setDisable(false);
+						String converterLogFileName = "converter.log";
+						try (BufferedReader br = new BufferedReader(new FileReader(converterLogFileName))) {
+							StringBuffer sb = new StringBuffer();
+							String currentLine;
+							while ((currentLine = br.readLine()) != null)
+								sb.append(currentLine + "\n");
+							vClient.getTxtRunLog().setText(sb.toString());
+							vClient.getLogReportTabPane().getSelectionModel().select(1); // select run log tab
+
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+
+					} else {
+						appStatusBar.setText("Converter failed");
+
+						// show error notification
+						Notifications.create().title("VerifClient").text("Converter failed").showError();
+
+						Alert convertAlert = new Alert(AlertType.ERROR);
+						convertAlert.initModality(Modality.APPLICATION_MODAL);
+						convertAlert.initOwner(application.getPrimaryStage());
+						convertAlert.setTitle("Converter error");
+						convertAlert.setHeaderText("Failed to convert UXP");
+						convertAlert.setContentText(converterResponse.getMessage());
+						convertAlert.showAndWait();
+					}
+				}
+			};
+
+			Thread converterThread = new Thread(task);
+			converterThread.start(); // run in background
+		}
+	}
+
+	@FXML
+	private void handleMenuImportFromExMorphoXml() {
+		// user select xml
+		FileChooser xmlChooser = new FileChooser();
+		xmlChooser.setTitle("Select ex-Morpho document (exported from SCDL)");
+		xmlChooser.getExtensionFilters().addAll(new ExtensionFilter("Customer specification", "*.xml"));
+		File selectedXml = xmlChooser.showOpenDialog(application.getPrimaryStage());
+		if (selectedXml != null) {
+			logger.info("XML selected: " + selectedXml.getAbsolutePath());
+			// make user wait as uxp conversion executes
+			vClient.getMaskerPane().setText("Converting XML. Please wait..");
+			// display masker pane
+			vClient.getMaskerPane().setVisible(true);
+			appStatusBar.setDisable(true);
+
+			// use threads to avoid application freeze
+			Task<Void> task = new Task<Void>() {
+				@Override
+				protected Void call() throws Exception {
+					// call conversion API
+					converterResponse = verifConfigService.convertExMorphoDoc(selectedXml.getAbsolutePath());
+					if (converterResponse.isConvertSuccess())
+						logger.info(converterResponse.toJson());
+					else
+						logger.error(converterResponse.toJson());
+
+					return null;
+				}
+
+				@Override
+				protected void succeeded() {
+					super.succeeded();
+					// dismiss masker pane
+					vClient.getMaskerPane().setVisible(false);
+					menuBar.setDisable(false);
+
+					// update status bar
+					if (converterResponse.isConvertSuccess()) {
+						appStatusBar.setText(converterResponse.getMessage());
+
+						// show notification
+						Notifications.create().title("VerifClient").text("XML converted successfully").showInformation();
+
+						selectedCsv = new File(converterResponse.getGeneratedCsv());
+						verifConfig.setPathToCsv(selectedCsv.getAbsolutePath()); // update verif config
+						application.getPrimaryStage().setTitle("VerifClient - " + converterResponse.getGeneratedCsv() + " (IMPORTED)");
+
+						// display converter log
+						vClient.getTxtRunLog().setDisable(false);
+						String converterLogFileName = "converter.log";
+						try (BufferedReader br = new BufferedReader(new FileReader(converterLogFileName))) {
+							StringBuffer sb = new StringBuffer();
+							String currentLine;
+							while ((currentLine = br.readLine()) != null)
+								sb.append(currentLine + "\n");
+							vClient.getTxtRunLog().setText(sb.toString());
+							vClient.getLogReportTabPane().getSelectionModel().select(1); // select run log tab
+
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+
+					} else {
+						appStatusBar.setText("Converter failed");
+
+						// show error notification
+						Notifications.create().title("VerifClient").text("Converter failed").showError();
+
+						Alert convertAlert = new Alert(AlertType.ERROR);
+						convertAlert.initModality(Modality.APPLICATION_MODAL);
+						convertAlert.initOwner(application.getPrimaryStage());
+						convertAlert.setTitle("Converter error");
+						convertAlert.setHeaderText("Failed to convert XML");
+						convertAlert.setContentText(converterResponse.getMessage());
+						convertAlert.showAndWait();
+					}
+				}
+			};
+
+			Thread converterThread = new Thread(task);
+			converterThread.start(); // run in background
 		}
 	}
 	

@@ -5,16 +5,23 @@ import java.io.File;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import com.idemia.jkt.tec.VerifClient.response.ConverterResponse;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,6 +65,7 @@ public class VerifConfigServiceImpl implements VerifConfigService {
 	private File configFile;
 	
 	private final String SERVER_URL = "http://127.0.0.1:5000/";
+	private final String statusUri = SERVER_URL + "getServerStatus";
 	private String exceptionMessage;
 	
 	@Autowired
@@ -169,8 +177,7 @@ public class VerifConfigServiceImpl implements VerifConfigService {
 	@Override
 	public VerificationResponse runVerif() throws Exception {
 		String uri = SERVER_URL + "run";
-		String statusUri = SERVER_URL + "getServerStatus";
-		
+
 		if (serverIsRunning(statusUri)) {
 			String httpGetResult = doGet(uri);
 			Gson gson = new Gson();
@@ -181,7 +188,35 @@ public class VerifConfigServiceImpl implements VerifConfigService {
 			return new VerificationResponse(false, exceptionMessage);
 		
 	}
-	
+
+	@Override
+	public ConverterResponse convertUxp(String docPath) throws Exception {
+		String uri = SERVER_URL + "convertUxp";
+
+		if (serverIsRunning(statusUri)) {
+			String httpPostResult = postToConvert(uri, docPath);
+			Gson gson = new Gson();
+			ConverterResponse converterResponse = gson.fromJson(httpPostResult, ConverterResponse.class);
+			return converterResponse;
+
+		} else
+			return new ConverterResponse(false, "", exceptionMessage);
+	}
+
+	@Override
+	public ConverterResponse convertExMorphoDoc(String docPath) throws Exception {
+		String uri = SERVER_URL + "convertExMorphoDoc";
+
+		if (serverIsRunning(statusUri)) {
+			String httpPostResult = postToConvert(uri, docPath);
+			Gson gson = new Gson();
+			ConverterResponse converterResponse = gson.fromJson(httpPostResult, ConverterResponse.class);
+			return converterResponse;
+
+		} else
+			return new ConverterResponse(false, "", exceptionMessage);
+	}
+
 	private String doGet(String uri) throws Exception {
 		// use Apache HttpClient to connect to server
 		HttpClient client = HttpClientBuilder.create().build();
@@ -197,6 +232,33 @@ public class VerifConfigServiceImpl implements VerifConfigService {
 		while ((line = rd.readLine()) != null)
 			result.append(line);
 		
+		return result.toString();
+	}
+
+	private String postToConvert(String uri, String docPath) throws Exception {
+		String keyStr = "";
+		if (uri.equals(SERVER_URL + "convertUxp"))
+			keyStr = "uxp";
+		if (uri.equals(SERVER_URL + "convertExMorphoDoc"))
+			keyStr = "xml";
+
+		HttpClient client = HttpClientBuilder.create().build();
+		HttpPost post = new HttpPost(uri);
+
+		List<NameValuePair> uriParams = new ArrayList<NameValuePair>();
+		uriParams.add(new BasicNameValuePair(keyStr, docPath));
+		post.setEntity(new UrlEncodedFormEntity(uriParams));
+
+		HttpResponse response = client.execute(post);
+		if (response.getStatusLine().getStatusCode() != 200)
+			throw new Exception(response.getStatusLine().getReasonPhrase());
+
+		BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+		StringBuffer result = new StringBuffer();
+		String line = "";
+		while ((line = rd.readLine()) != null)
+			result.append(line);
+
 		return result.toString();
 	}
 	
