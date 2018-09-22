@@ -8,7 +8,7 @@ public class ConverterResponse {
     private String generatedCsv;
     private String message;
 
-    private ConverterResponse() {}
+    public ConverterResponse() {}
 
     public ConverterResponse(boolean convertSuccess, String resultCsv, String message) {
         this.convertSuccess = convertSuccess;
