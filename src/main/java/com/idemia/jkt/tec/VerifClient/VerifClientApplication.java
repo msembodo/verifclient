@@ -65,7 +65,7 @@ public class VerifClientApplication extends Application {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("view/RootLayout.fxml"));
 			loader.setControllerFactory(springContext::getBean);
 			rootLayout = (BorderPane) loader.load();
-			
+						
 			// give controller access to main app
 			RootLayoutController controller = loader.getController();
 			controller.setMainApp(this);
