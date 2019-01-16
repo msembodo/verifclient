@@ -46,11 +46,17 @@ public class VerifClientController {
 	@FXML
 	private CheckBox chkUseVariablesTxt;
 	@FXML
+	private CheckBox chkUsimIn3gMode;
+	@FXML
 	private CheckBox chkAdm2;
 	@FXML
 	private CheckBox chkAdm3;
 	@FXML
 	private CheckBox chkAdm4;
+	@FXML
+	private Label lblUsimAid;
+	@FXML
+	private TextField txtUsimAid;
 	@FXML
 	private TextField txtVariables;
 	@FXML
@@ -89,6 +95,11 @@ public class VerifClientController {
 		chkHexSfi.setSelected(root.getVerifConfig().isHexSfi());
 		chkHexRecordNumber.setSelected(root.getVerifConfig().isHexRecordNumber());
 		chkUseVariablesTxt.setSelected(root.getVerifConfig().isUseVariablesTxt());
+		chkUsimIn3gMode.setSelected(root.getVerifConfig().isUsimIn3gMode());
+		
+		// USIM AID field is disabled by default
+		lblUsimAid.setDisable(true);
+		txtUsimAid.setDisable(true);
 		
 		// ADM2-ADM3-ADM4 fields are disabled by default
 		txtAdm2.setDisable(true);
@@ -104,12 +115,19 @@ public class VerifClientController {
 		else
 			fixedWidthFont = Font.font("Monospaced");
 		
-		chkUseVariablesTxt.setSelected(root.getVerifConfig().isUseVariablesTxt());
+//		chkUseVariablesTxt.setSelected(root.getVerifConfig().isUseVariablesTxt());
 		txtVariables.setFont(fixedWidthFont);
 		txtVariables.setText(root.getVerifConfig().getPathToVariablesTxt());
 		if (chkUseVariablesTxt.isSelected()) {
 			txtVariables.setDisable(false);
 			btnVariables.setDisable(false);
+		}
+		
+		txtUsimAid.setFont(fixedWidthFont);
+		txtUsimAid.setText(root.getVerifConfig().getUsimAid());
+		if (chkUsimIn3gMode.isSelected()) {
+			lblUsimAid.setDisable(false);
+			txtUsimAid.setDisable(false);
 		}
 
 		chkAdm2.setSelected(root.getVerifConfig().isUseAdm2());
@@ -149,6 +167,21 @@ public class VerifClientController {
 				else {
 					txtVariables.setDisable(true);
 					btnVariables.setDisable(true);
+				}
+			}
+		});
+		
+		chkUsimIn3gMode.selectedProperty().addListener(new ChangeListener<Boolean>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+				if (chkUsimIn3gMode.isSelected()) {
+					lblUsimAid.setDisable(false);
+					txtUsimAid.setDisable(false);
+				}
+				else {
+					lblUsimAid.setDisable(true);
+					txtUsimAid.setDisable(true);
 				}
 			}
 		});
@@ -208,11 +241,13 @@ public class VerifClientController {
 		root.getVerifConfig().setHexSfi(chkHexSfi.isSelected());
 		root.getVerifConfig().setHexRecordNumber(chkHexRecordNumber.isSelected());
 		root.getVerifConfig().setUseVariablesTxt(chkUseVariablesTxt.isSelected());
+		root.getVerifConfig().setUsimIn3gMode(chkUsimIn3gMode.isSelected());
 		root.getVerifConfig().setUseAdm2(chkAdm2.isSelected());
 		root.getVerifConfig().setUseAdm3(chkAdm3.isSelected());
 		root.getVerifConfig().setUseAdm4(chkAdm4.isSelected());
 		
 		root.getVerifConfig().setPathToVariablesTxt(txtVariables.getText());
+		root.getVerifConfig().setUsimAid(txtUsimAid.getText());
 		root.getVerifConfig().setCodeAdm1(txtAdm1.getText());
 		root.getVerifConfig().setCodeAdm2(txtAdm2.getText());
 		root.getVerifConfig().setCodeAdm3(txtAdm3.getText());

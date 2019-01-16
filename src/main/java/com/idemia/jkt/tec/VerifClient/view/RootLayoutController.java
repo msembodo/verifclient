@@ -106,6 +106,15 @@ public class RootLayoutController {
 		// user select input csv
 		FileChooser csvFileChooser = new FileChooser();
 		csvFileChooser.setTitle("Select CSV");
+		String csvFolder = "";
+		if (verifConfig.getPathToCsv() != "C:\\") {
+			csvFolder = new File(verifConfig.getPathToCsv()).getParent();
+			if (csvFolder == null)
+				csvFolder = "C:\\";
+		}
+		else
+			csvFolder = "C:\\";
+		csvFileChooser.setInitialDirectory(new File(csvFolder)); // TODO
 		csvFileChooser.getExtensionFilters().addAll(new ExtensionFilter("Verification Data", "*.csv"));
 		selectedCsv = csvFileChooser.showOpenDialog(application.getPrimaryStage());
 		if (selectedCsv != null) {
@@ -396,6 +405,7 @@ public class RootLayoutController {
 								while ((currentLine = br.readLine()) != null)
 									sb.append(currentLine + "\n");
 								vClient.getTxtRunLog().setText(sb.toString());
+								vClient.getLogReportTabPane().getSelectionModel().select(0); // select error report tab
 							} catch (IOException e) {
 								e.printStackTrace();
 							}

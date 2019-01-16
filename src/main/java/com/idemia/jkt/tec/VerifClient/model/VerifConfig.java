@@ -16,6 +16,7 @@ public class VerifConfig {
 	private boolean hexSfi;
 	private boolean hexRecordNumber;
 	private boolean useVariablesTxt;
+	private boolean usimIn3gMode;
 	private boolean useAdm2;
 	private boolean useAdm3;
 	private boolean useAdm4;
@@ -33,6 +34,7 @@ public class VerifConfig {
 	
 	private String pathToCsv;
 	private String pathToVariablesTxt;
+	private String usimAid;
 	
 	// custom apdu
 	private CustomApdu customApdu;
@@ -40,15 +42,16 @@ public class VerifConfig {
 	public VerifConfig() {}
 
 	public VerifConfig(int readerNumber, boolean chv1Disabled, boolean hexSfi, boolean hexRecordNumber, boolean useVariablesTxt,
-			boolean useAdm2, boolean useAdm3, boolean useAdm4, String codeAdm1, String codeAdm2, String codeAdm3,
+			boolean usimIn3gMode, boolean useAdm2, boolean useAdm3, boolean useAdm4, String codeAdm1, String codeAdm2, String codeAdm3,
 			String codeAdm4, String codeChv1, String codeChv2, VerifLiterals verifLiterals, CustomApdu customApdu, 
-			String pathToCsv, String pathToVariablesTxt) {
+			String pathToCsv, String pathToVariablesTxt, String usimAid) {
 		
 		this.readerNumber = readerNumber;
 		this.chv1Disabled = chv1Disabled;
 		this.hexSfi = hexSfi;
 		this.hexRecordNumber = hexRecordNumber;
 		this.useVariablesTxt = useVariablesTxt;
+		this.usimIn3gMode = usimIn3gMode;
 		this.useAdm2 = useAdm2;
 		this.useAdm3 = useAdm3;
 		this.useAdm4 = useAdm4;
@@ -62,6 +65,7 @@ public class VerifConfig {
 		this.customApdu = customApdu;
 		this.pathToCsv = pathToCsv;
 		this.pathToVariablesTxt = pathToVariablesTxt;
+		this.usimAid = usimAid;
 	}
 
 	public int getReaderNumber() {
@@ -89,6 +93,15 @@ public class VerifConfig {
 	@XmlElement
 	public void setPathToVariablesTxt(String pathToVariablesTxt) {
 		this.pathToVariablesTxt = pathToVariablesTxt;
+	}
+
+	public String getUsimAid() {
+		return usimAid;
+	}
+	
+	@XmlElement
+	public void setUsimAid(String usimAid) {
+		this.usimAid = usimAid;
 	}
 
 	public boolean isChv1Disabled() {
@@ -125,6 +138,15 @@ public class VerifConfig {
 	@XmlAttribute
 	public void setUseVariablesTxt(boolean useVariablesTxt) {
 		this.useVariablesTxt = useVariablesTxt;
+	}
+
+	public boolean isUsimIn3gMode() {
+		return usimIn3gMode;
+	}
+	
+	@XmlAttribute
+	public void setUsimIn3gMode(boolean usimIn3gMode) {
+		this.usimIn3gMode = usimIn3gMode;
 	}
 
 	public boolean isUseAdm2() {

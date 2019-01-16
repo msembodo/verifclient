@@ -40,7 +40,9 @@ public class VerifConfigServiceImpl implements VerifConfigService {
 	static Logger logger = Logger.getLogger(VerifConfigServiceImpl.class.getName());
 	
 	// constants for default values
+	private final String CSV_PATH_DEFAULT = "C:\\";
 	private final int READER_DEFAULT = 0;
+	private final String USIM_AID_DEFAULT = "A0000000871002FF49FFFF89040B00FF";
 	private final String ADM1_DEFAULT = "933F57845F706921";
 	private final String CHV1_DEFAULT = "31323334FFFFFFFF";
 	private final String S_FILESTRUCT_TR_DEFAULT = "Transparent;TR";
@@ -106,6 +108,8 @@ public class VerifConfigServiceImpl implements VerifConfigService {
 			defaultConfig.setHexSfi(true);
 			defaultConfig.setHexRecordNumber(false);
 			defaultConfig.setUseVariablesTxt(false);
+			defaultConfig.setUsimIn3gMode(false);
+			defaultConfig.setUsimAid(USIM_AID_DEFAULT);
 			defaultConfig.setUseAdm2(false);
 			defaultConfig.setUseAdm3(false);
 			defaultConfig.setUseAdm4(false);
@@ -140,7 +144,7 @@ public class VerifConfigServiceImpl implements VerifConfigService {
 			
 			defaultConfig.setCustomApdu(defaultCustomApdu);
 			defaultConfig.setVerifLiterals(defaultLiterals);
-			defaultConfig.setPathToCsv(""); // set blank for default
+			defaultConfig.setPathToCsv(CSV_PATH_DEFAULT);
 			defaultConfig.setPathToVariablesTxt(""); // set blank for default
 			
 			try {
