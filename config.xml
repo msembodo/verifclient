@@ -26,7 +26,7 @@
     </customApdu>
     <pathToCsv>/home/msmbd/O2_128.24_LTE_24_OTA_PostPay_4.csv</pathToCsv>
     <pathToVariablesTxt></pathToVariablesTxt>
-    <readerNumber>0</readerNumber>
+    <readerNumber>1</readerNumber>
     <verifLiterals>
         <sAccADM1>ADM1</sAccADM1>
         <sAccADM2>ADM2</sAccADM2>
