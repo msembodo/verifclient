@@ -1,6 +1,12 @@
+v0.0.5:
+Author: Martyono Sembodo
+* Hotfix for issue when selecting USIM AID other ADF cannot be selected
+* USIM AID field is disabled for now
+
 v0.0.4:
 Author: Martyono Sembodo
 * Added feature for USIM in 3G mode
+* Support for SIMBIOS CTD
 
 v0.0.3:
 Author: Martyono Sembodo

@@ -115,7 +115,6 @@ public class VerifClientController {
 		else
 			fixedWidthFont = Font.font("Monospaced");
 		
-//		chkUseVariablesTxt.setSelected(root.getVerifConfig().isUseVariablesTxt());
 		txtVariables.setFont(fixedWidthFont);
 		txtVariables.setText(root.getVerifConfig().getPathToVariablesTxt());
 		if (chkUseVariablesTxt.isSelected()) {
@@ -125,10 +124,10 @@ public class VerifClientController {
 		
 		txtUsimAid.setFont(fixedWidthFont);
 		txtUsimAid.setText(root.getVerifConfig().getUsimAid());
-		if (chkUsimIn3gMode.isSelected()) {
-			lblUsimAid.setDisable(false);
-			txtUsimAid.setDisable(false);
-		}
+//		if (chkUsimIn3gMode.isSelected()) {
+//			lblUsimAid.setDisable(false);
+//			txtUsimAid.setDisable(false);
+//		}
 
 		chkAdm2.setSelected(root.getVerifConfig().isUseAdm2());
 		chkAdm3.setSelected(root.getVerifConfig().isUseAdm3());
@@ -171,20 +170,20 @@ public class VerifClientController {
 			}
 		});
 		
-		chkUsimIn3gMode.selectedProperty().addListener(new ChangeListener<Boolean>() {
-
-			@Override
-			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-				if (chkUsimIn3gMode.isSelected()) {
-					lblUsimAid.setDisable(false);
-					txtUsimAid.setDisable(false);
-				}
-				else {
-					lblUsimAid.setDisable(true);
-					txtUsimAid.setDisable(true);
-				}
-			}
-		});
+//		chkUsimIn3gMode.selectedProperty().addListener(new ChangeListener<Boolean>() {
+//
+//			@Override
+//			public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+//				if (chkUsimIn3gMode.isSelected()) {
+//					lblUsimAid.setDisable(false);
+//					txtUsimAid.setDisable(false);
+//				}
+//				else {
+//					lblUsimAid.setDisable(true);
+//					txtUsimAid.setDisable(true);
+//				}
+//			}
+//		});
 		
 		chkAdm2.selectedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override
