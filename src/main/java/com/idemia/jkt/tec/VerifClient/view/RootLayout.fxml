@@ -14,7 +14,7 @@
          <children>
             <MenuBar fx:id="menuBar">
               <menus>
-                <Menu mnemonicParsing="false" text="File">
+                <Menu mnemonicParsing="false" text="_File">
                   <items>
                         <MenuItem fx:id="menuLoadCsv" mnemonicParsing="false" onAction="#handleMenuLoadCsv" text="Load CSV" />
                         <Menu fx:id="menuImportFrom" mnemonicParsing="false" text="Import From">
@@ -28,7 +28,7 @@
                     <MenuItem fx:id="menuQuit" mnemonicParsing="false" onAction="#handleMenuClose" text="Quit" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Tools">
+                <Menu mnemonicParsing="false" text="_Tools">
                   <items>
                         <MenuItem fx:id="menuSelectReader" mnemonicParsing="false" onAction="#handleMenuSelectReader" text="Select Reader" />
                         <MenuItem fx:id="menuEditLiterals" mnemonicParsing="false" onAction="#handleMenuEditLiterals" text="Edit Literals" />
@@ -36,7 +36,7 @@
                     <MenuItem fx:id="menuRun" mnemonicParsing="false" onAction="#handleMenuRun" text="Run" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Help">
+                <Menu mnemonicParsing="false" text="_Help">
                   <items>
                     <MenuItem fx:id="menuAbout" mnemonicParsing="false" onAction="#handleMenuAbout" text="About" />
                   </items>

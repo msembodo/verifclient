@@ -35,6 +35,9 @@ import javafx.concurrent.Task;
 import javafx.fxml.*;
 import javafx.geometry.Orientation;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.web.WebEngine;
 import javafx.stage.FileChooser;
@@ -110,15 +113,23 @@ public class RootLayoutController {
 	@FXML
 	private void initialize() {
 		menuLoadCsv.setGraphic(new FontAwesomeIconView(FontAwesomeIcon.FOLDER_OPEN));
+		menuLoadCsv.setAccelerator(new KeyCodeCombination(KeyCode.O, KeyCombination.CONTROL_DOWN));
 		menuImportFrom.setGraphic(new MaterialDesignIconView(MaterialDesignIcon.IMPORT));
 		menuExMorphoXml.setGraphic(new MaterialDesignIconView(MaterialDesignIcon.FILE_EXCEL));
+		menuExMorphoXml.setAccelerator(new KeyCodeCombination(KeyCode.F6));
 		menuSimpml.setGraphic(new MaterialDesignIconView(MaterialDesignIcon.XML));
+		menuSimpml.setAccelerator(new KeyCodeCombination(KeyCode.F7));
 		menuSave.setGraphic(new FontAwesomeIconView(FontAwesomeIcon.SAVE));
+		menuSave.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
 		menuQuit.setGraphic(new MaterialDesignIconView(MaterialDesignIcon.CLOSE));
+		menuQuit.setAccelerator(new KeyCodeCombination(KeyCode.W, KeyCombination.CONTROL_DOWN));
 		menuSelectReader.setGraphic(new FontAwesomeIconView(FontAwesomeIcon.USB));
+		menuSelectReader.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCombination.CONTROL_DOWN));
 		menuEditLiterals.setGraphic(new FontAwesomeIconView(FontAwesomeIcon.FONT));
+		menuEditLiterals.setAccelerator(new KeyCodeCombination(KeyCode.L, KeyCombination.CONTROL_DOWN));
 		menuCustomApdu.setGraphic(new MaterialDesignIconView(MaterialDesignIcon.SETTINGS));
 		menuRun.setGraphic(new FontAwesomeIconView(FontAwesomeIcon.PLAY));
+		menuRun.setAccelerator(new KeyCodeCombination(KeyCode.F5));
 		menuAbout.setGraphic(new FontAwesomeIconView(FontAwesomeIcon.USER));
 		
 		btnOpenCsv = new Button("", new FontAwesomeIconView(FontAwesomeIcon.FOLDER_OPEN));
@@ -184,7 +195,7 @@ public class RootLayoutController {
 	}
 	
 	@FXML
-	private void handleMenuLoadCsv() {
+	public void handleMenuLoadCsv() {
 		// user select input csv
 		FileChooser csvFileChooser = new FileChooser();
 		csvFileChooser.setTitle("Select CSV");
@@ -383,7 +394,7 @@ public class RootLayoutController {
 	}
 	
 	@FXML
-	private void handleMenuSaveConfiguration() {
+	public void handleMenuSaveConfiguration() {
 		vClient.saveOptionsAndCodes();
 		verifConfigService.saveConfig(verifConfig);
 	}
