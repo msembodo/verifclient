@@ -26,6 +26,10 @@ import com.idemia.jkt.tec.VerifClient.model.VerifConfig;
 import com.idemia.jkt.tec.VerifClient.response.VerificationResponse;
 import com.idemia.jkt.tec.VerifClient.service.VerifConfigService;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
+import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.*;
@@ -60,6 +64,40 @@ public class RootLayoutController {
 	@FXML
 	private MenuBar menuBar;
 	
+	@FXML
+	private MenuItem menuLoadCsv;
+	@FXML
+	private Menu menuImportFrom;
+	@FXML
+	private MenuItem menuExMorphoXml;
+	@FXML
+	private MenuItem menuSimpml;
+	@FXML
+	private MenuItem menuSave;
+	@FXML
+	private MenuItem menuQuit;
+	@FXML
+	private MenuItem menuSelectReader;
+	@FXML
+	private MenuItem menuEditLiterals;
+	@FXML
+	private MenuItem menuCustomApdu;
+	@FXML
+	private MenuItem menuRun;
+	@FXML
+	private MenuItem menuAbout;
+	
+	@FXML
+	private ToolBar toolBar;
+	
+	private Button btnOpenCsv;
+	private Button btnScdl;
+	private Button btnOpenUxp;
+	private Button btnSaveConfiguration;
+	private Button btnSelectReader;
+	private Button btnEditLiterals;
+	private Button btnRun;
+	
 	private StatusBar appStatusBar;
 	private Label lblTerminalInfo;
 	
@@ -71,6 +109,50 @@ public class RootLayoutController {
 	
 	@FXML
 	private void initialize() {
+		menuLoadCsv.setGraphic(new FontAwesomeIconView(FontAwesomeIcon.FOLDER_OPEN));
+		menuImportFrom.setGraphic(new MaterialDesignIconView(MaterialDesignIcon.IMPORT));
+		menuExMorphoXml.setGraphic(new MaterialDesignIconView(MaterialDesignIcon.FILE_EXCEL));
+		menuSimpml.setGraphic(new MaterialDesignIconView(MaterialDesignIcon.XML));
+		menuSave.setGraphic(new FontAwesomeIconView(FontAwesomeIcon.SAVE));
+		menuQuit.setGraphic(new MaterialDesignIconView(MaterialDesignIcon.CLOSE));
+		menuSelectReader.setGraphic(new FontAwesomeIconView(FontAwesomeIcon.USB));
+		menuEditLiterals.setGraphic(new FontAwesomeIconView(FontAwesomeIcon.FONT));
+		menuCustomApdu.setGraphic(new MaterialDesignIconView(MaterialDesignIcon.SETTINGS));
+		menuRun.setGraphic(new FontAwesomeIconView(FontAwesomeIcon.PLAY));
+		menuAbout.setGraphic(new FontAwesomeIconView(FontAwesomeIcon.USER));
+		
+		btnOpenCsv = new Button("", new FontAwesomeIconView(FontAwesomeIcon.FOLDER_OPEN));
+		btnOpenCsv.setTooltip(new Tooltip("Load CSV"));
+		btnOpenCsv.setOnAction((event) -> { handleMenuLoadCsv(); });
+		btnScdl = new Button("", new MaterialDesignIconView(MaterialDesignIcon.FILE_EXCEL));
+		btnScdl.setTooltip(new Tooltip("Import SCDL Technical Report"));
+		btnScdl.setOnAction((event) -> { handleMenuImportFromExMorphoXml(); });
+		btnOpenUxp = new Button("", new MaterialDesignIconView(MaterialDesignIcon.XML));
+		btnOpenUxp.setTooltip(new Tooltip("Import UXP"));
+		btnOpenUxp.setOnAction((event) -> { handleMenuImportFromUxp(); });
+		btnSaveConfiguration = new Button("", new FontAwesomeIconView(FontAwesomeIcon.SAVE));
+		btnSaveConfiguration.setTooltip(new Tooltip("Save Configuration"));
+		btnSaveConfiguration.setOnAction((event) -> { handleMenuSaveConfiguration(); });
+		btnSelectReader = new Button("", new FontAwesomeIconView(FontAwesomeIcon.USB));
+		btnSelectReader.setTooltip(new Tooltip("Select Reader"));
+		btnSelectReader.setOnAction((event) -> { handleMenuSelectReader(); });
+		btnEditLiterals = new Button("", new FontAwesomeIconView(FontAwesomeIcon.FONT));
+		btnEditLiterals.setTooltip(new Tooltip("Edit Literals"));
+		btnEditLiterals.setOnAction((event) -> { handleMenuEditLiterals(); });
+		btnRun = new Button("", new FontAwesomeIconView(FontAwesomeIcon.PLAY));
+		btnRun.setTooltip(new Tooltip("Run Verification"));
+		btnRun.setOnAction((event) -> { handleMenuRun(); });
+
+		toolBar.getItems().add(btnOpenCsv);
+		toolBar.getItems().add(btnScdl);
+		toolBar.getItems().add(btnOpenUxp);
+		toolBar.getItems().add(new Separator());
+		toolBar.getItems().add(btnEditLiterals);
+		toolBar.getItems().add(btnSaveConfiguration);
+		toolBar.getItems().add(btnRun);
+		toolBar.getItems().add(new Separator());
+		toolBar.getItems().add(btnSelectReader);
+		
 		appStatusBar = new StatusBar();
 		rootBorderPane.setBottom(appStatusBar);
 		
@@ -114,7 +196,7 @@ public class RootLayoutController {
 		}
 		else
 			csvFolder = "C:\\";
-		csvFileChooser.setInitialDirectory(new File(csvFolder)); // TODO
+		csvFileChooser.setInitialDirectory(new File(csvFolder));
 		csvFileChooser.getExtensionFilters().addAll(new ExtensionFilter("Verification Data", "*.csv"));
 		selectedCsv = csvFileChooser.showOpenDialog(application.getPrimaryStage());
 		if (selectedCsv != null) {
@@ -138,6 +220,7 @@ public class RootLayoutController {
 			// display masker pane
 			vClient.getMaskerPane().setVisible(true);
 			menuBar.setDisable(true);
+			toolBar.setDisable(true);
 			appStatusBar.setDisable(true);
 
 			// use threads to avoid application freeze
@@ -160,6 +243,7 @@ public class RootLayoutController {
 					// dismiss masker pane
 					vClient.getMaskerPane().setVisible(false);
 					menuBar.setDisable(false);
+					toolBar.setDisable(false);
 					appStatusBar.setDisable(false);
 
 					// update status bar
@@ -223,6 +307,8 @@ public class RootLayoutController {
 			vClient.getMaskerPane().setText("Converting XML. Please wait..");
 			// display masker pane
 			vClient.getMaskerPane().setVisible(true);
+			menuBar.setDisable(true);
+			toolBar.setDisable(true);
 			appStatusBar.setDisable(true);
 
 			// use threads to avoid application freeze
@@ -245,6 +331,8 @@ public class RootLayoutController {
 					// dismiss masker pane
 					vClient.getMaskerPane().setVisible(false);
 					menuBar.setDisable(false);
+					toolBar.setDisable(false);
+					appStatusBar.setDisable(false);
 
 					// update status bar
 					if (converterResponse.isConvertSuccess()) {
@@ -350,6 +438,7 @@ public class RootLayoutController {
 				// display masker pane
 				vClient.getMaskerPane().setVisible(true);
 				menuBar.setDisable(true);
+				toolBar.setDisable(true);
 				appStatusBar.setDisable(true);
 				
 				// use threads to avoid application freeze
@@ -373,6 +462,7 @@ public class RootLayoutController {
 						// dismiss masker pane
 						vClient.getMaskerPane().setVisible(false);
 						menuBar.setDisable(false);
+						toolBar.setDisable(false);
 						appStatusBar.setDisable(false);
 						
 						// update status bar

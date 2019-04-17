@@ -71,6 +71,7 @@ public class VerifClientApplication extends Application {
 			controller.setMainApp(this);
 			
 			Scene scene = new Scene(rootLayout);
+			rootLayout.requestFocus();
 			
 			primaryStage.setScene(scene);			
 			primaryStage.getIcons().add(new Image(VerifClientApplication.class.getResourceAsStream("view/fv_icon.png")));
