@@ -12,6 +12,7 @@ import com.idemia.jkt.tec.VerifClient.view.CustomAPDUController;
 import com.idemia.jkt.tec.VerifClient.view.EditLiteralsController;
 import com.idemia.jkt.tec.VerifClient.view.RootLayoutController;
 import com.idemia.jkt.tec.VerifClient.view.SelectReaderController;
+import com.idemia.jkt.tec.VerifClient.view.UserGuideController;
 import com.idemia.jkt.tec.VerifClient.view.VerifClientController;
 
 import javafx.application.Application;
@@ -35,6 +36,7 @@ public class VerifClientApplication extends Application {
 	private Stage editLiteralsDialogStage;
 	private Stage selectReaderDialogStage;
 	private Stage customApduDialogStage;
+	private Stage userGuideStage;
 	private Stage aboutDialogStage;
 
 	public static void main(String[] args) {
@@ -178,6 +180,31 @@ public class VerifClientApplication extends Application {
 		}
 	}
 	
+	public void showUserGuide() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("view/UserGuide.fxml"));
+			loader.setControllerFactory(springContext::getBean);
+			AnchorPane userGuide = (AnchorPane) loader.load();
+			
+			// give controller access to main app
+			UserGuideController controller = loader.getController();
+			controller.setMainApp(this);
+			
+			// create dialog
+			userGuideStage = new Stage();
+			userGuideStage.setTitle("User Guide");
+			userGuideStage.initModality(Modality.WINDOW_MODAL);
+			userGuideStage.initOwner(primaryStage);
+			Scene scene = new Scene(userGuide);
+			userGuideStage.setScene(scene);
+			
+			userGuideStage.showAndWait();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void showAbout() {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("view/About.fxml"));
@@ -191,6 +218,8 @@ public class VerifClientApplication extends Application {
 			// create dialog
 			aboutDialogStage = new Stage();
 			aboutDialogStage.setTitle("About");
+			aboutDialogStage.getIcons().add(new Image(VerifClientApplication.class.getResourceAsStream("view/fv_icon.png")));
+			
 			aboutDialogStage.setResizable(false);
 			aboutDialogStage.initModality(Modality.WINDOW_MODAL);
 			aboutDialogStage.initOwner(primaryStage);

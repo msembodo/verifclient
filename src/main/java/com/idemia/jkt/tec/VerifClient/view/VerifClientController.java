@@ -1,11 +1,7 @@
 package com.idemia.jkt.tec.VerifClient.view;
 
 import java.io.File;
-//import java.net.MalformedURLException;
-import java.net.URL;
-
 import javafx.scene.control.*;
-import javafx.scene.web.WebEngine;
 import org.apache.log4j.Logger;
 import org.controlsfx.control.MaskerPane;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -218,17 +214,21 @@ public class VerifClientController {
 		maskerPane.setVisible(false);
 		stackPane.getChildren().add(maskerPane);
 		
+		webErrorReport.setDisable(true);
+		
 		// control for displaying error report
-		WebEngine webEngine = webErrorReport.getEngine();
+//		WebEngine webEngine = webErrorReport.getEngine();
 
 		// display quick guide
-		URL urlHowto = this.getClass().getResource("/com/idemia/jkt/tec/VerifClient/view/howto_local.html");
-		webEngine.load(urlHowto.toString());
+//		URL urlHowto = this.getClass().getResource("/com/idemia/jkt/tec/VerifClient/view/howto_local.html");
+//		webEngine.load(urlHowto.toString());
 		
 		// control for displaying run log
 		txtRunLog.setFont(fixedWidthFont);
 		txtRunLog.setEditable(false);
 		txtRunLog.setDisable(true);
+		
+		logReportTabPane.getSelectionModel().select(1);
 	}
 
 	public VerifClientApplication getApplication() {

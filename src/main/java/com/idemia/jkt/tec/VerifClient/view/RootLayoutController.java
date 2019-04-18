@@ -88,6 +88,8 @@ public class RootLayoutController {
 	@FXML
 	private MenuItem menuRun;
 	@FXML
+	private MenuItem menuUserGuide;
+	@FXML
 	private MenuItem menuAbout;
 	
 	@FXML
@@ -130,6 +132,7 @@ public class RootLayoutController {
 		menuCustomApdu.setGraphic(new MaterialDesignIconView(MaterialDesignIcon.SETTINGS));
 		menuRun.setGraphic(new FontAwesomeIconView(FontAwesomeIcon.PLAY));
 		menuRun.setAccelerator(new KeyCodeCombination(KeyCode.F5));
+		menuUserGuide.setGraphic(new MaterialDesignIconView(MaterialDesignIcon.HELP));
 		menuAbout.setGraphic(new FontAwesomeIconView(FontAwesomeIcon.USER));
 		
 		btnOpenCsv = new Button("", new FontAwesomeIconView(FontAwesomeIcon.FOLDER_OPEN));
@@ -191,7 +194,15 @@ public class RootLayoutController {
 	@FXML
 	private void handleMenuClose() {
 		// quit application
-		Platform.exit();
+		Alert exitAlert = new Alert(AlertType.CONFIRMATION);
+		exitAlert.initModality(Modality.APPLICATION_MODAL);
+		exitAlert.initOwner(application.getPrimaryStage());
+		exitAlert.setTitle("Confirmation");
+		exitAlert.setHeaderText("Quit VerifClient?");
+		exitAlert.setContentText("Changes made in configuration before running verification will not be saved.");
+		Optional<ButtonType> result = exitAlert.showAndWait();
+		if (result.get() == ButtonType.OK)
+			Platform.exit();
 	}
 	
 	@FXML
@@ -412,6 +423,11 @@ public class RootLayoutController {
 	@FXML
 	private void handleMenuCustomApdu() {
 		application.showCustomApdu();
+	}
+	
+	@FXML
+	private void handleMenuUserGuide() {
+		application.showUserGuide();
 	}
 	
 	@FXML
