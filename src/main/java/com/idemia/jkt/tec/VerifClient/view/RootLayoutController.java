@@ -101,10 +101,14 @@ public class RootLayoutController {
 	private Button btnSaveConfiguration;
 	private Button btnSelectReader;
 	private Button btnEditLiterals;
+	private Button btnCustomApdu;
 	private Button btnRun;
 	
 	private StatusBar appStatusBar;
 	private Label lblTerminalInfo;
+	private String previousSearch;
+	private int searchCount;
+	private int searchStep;
 	
 	public RootLayoutController() {}
 	
@@ -153,6 +157,9 @@ public class RootLayoutController {
 		btnEditLiterals = new Button("", new FontAwesomeIconView(FontAwesomeIcon.FONT));
 		btnEditLiterals.setTooltip(new Tooltip("Edit Literals"));
 		btnEditLiterals.setOnAction((event) -> { handleMenuEditLiterals(); });
+		btnCustomApdu = new Button("", new MaterialDesignIconView(MaterialDesignIcon.SETTINGS));
+		btnCustomApdu.setTooltip(new Tooltip("Custom APDU for Security Codes Verification"));
+		btnCustomApdu.setOnAction((event) -> { handleMenuCustomApdu(); });
 		btnRun = new Button("", new FontAwesomeIconView(FontAwesomeIcon.PLAY));
 		btnRun.setTooltip(new Tooltip("Run Verification"));
 		btnRun.setOnAction((event) -> { handleMenuRun(); });
@@ -162,6 +169,7 @@ public class RootLayoutController {
 		toolBar.getItems().add(btnOpenUxp);
 		toolBar.getItems().add(new Separator());
 		toolBar.getItems().add(btnEditLiterals);
+		toolBar.getItems().add(btnCustomApdu);
 		toolBar.getItems().add(btnSaveConfiguration);
 		toolBar.getItems().add(btnRun);
 		toolBar.getItems().add(new Separator());
@@ -501,6 +509,7 @@ public class RootLayoutController {
 							
 							// display error report
 							vClient.getWebErrorReport().setDisable(false);
+							vClient.getWebErrorReport().setZoom(1.25);
 							WebEngine webEngine = vClient.getWebErrorReport().getEngine();
 							String errorReportPath = selectedCsv.getParent();
 							String errorReportFileName = selectedCsv.getName().substring(0, selectedCsv.getName().indexOf(".")) + "_error.html";
@@ -512,6 +521,29 @@ public class RootLayoutController {
 							} catch (MalformedURLException e) {
 								e.printStackTrace();
 							}
+							
+							// enable search box and define handler
+							vClient.getToolbarErrorReport().setDisable(false);
+							previousSearch = "";
+							vClient.getLblSearchCount().setText("");
+							vClient.getTxtSearchReport().setText("");
+							vClient.getTxtSearchReport().setOnAction((event) -> {
+								if (webEngine.getDocument() != null) {
+									String searchText = (String) vClient.getTxtSearchReport().getText();
+									if (!searchText.equals(previousSearch)) {
+										searchStep = 0;
+										removeHighlight(webEngine, previousSearch);
+										searchCount = (int) webEngine.executeScript("doCount('" + searchText + "')");
+										if (searchCount == 0)
+											vClient.getLblSearchCount().setText("no match found");
+									}
+									highlight(webEngine, searchText);
+									if (searchStep < searchCount) {
+										searchStep++;
+										vClient.getLblSearchCount().setText("match: " + searchStep + " of " + searchCount);
+									}
+								}
+							});
 							
 							// display run log
 							vClient.getTxtRunLog().setDisable(false);
@@ -548,6 +580,15 @@ public class RootLayoutController {
 				verifThread.start(); // run in background
 			}
 		}
+	}
+	
+	private void highlight(WebEngine webEngine, String text) {
+		webEngine.executeScript("doSearch('" + text + "')");
+		previousSearch = text;
+	}
+	
+	private void removeHighlight(WebEngine webEngine, String textToClear) {
+		webEngine.executeScript("doClear('" + textToClear + "')");
 	}
 
 	public VerifConfig getVerifConfig() {

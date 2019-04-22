@@ -9,12 +9,15 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.web.WebView?>
+<?import org.controlsfx.control.textfield.CustomTextField?>
 
 <AnchorPane prefHeight="768.0" prefWidth="1366.0" stylesheets="@light.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.idemia.jkt.tec.VerifClient.view.VerifClientController">
    <children>
@@ -95,7 +98,18 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <WebView fx:id="webErrorReport" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0" />
+                                          <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <center>
+                                                <WebView fx:id="webErrorReport" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                                             </center>
+                                             <top>
+                                                <ToolBar fx:id="toolbarErrorReport" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                   <items>
+                                                      <CustomTextField fx:id="txtSearchReport" promptText="Search In Error Report" />
+                                                   </items>
+                                                </ToolBar>
+                                             </top>
+                                          </BorderPane>
                                        </children>
                                     </AnchorPane>
                               </content>

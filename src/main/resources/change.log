@@ -1,3 +1,8 @@
+v0.0.6:
+Author: Martyono Sembodo
+* Adding toolbar and keyboard shortcuts
+* Search and highlight in error report
+
 v0.0.5:
 Author: Martyono Sembodo
 * Hotfix for issue when selecting USIM AID other ADF cannot be selected

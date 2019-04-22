@@ -4,11 +4,14 @@ import java.io.File;
 import javafx.scene.control.*;
 import org.apache.log4j.Logger;
 import org.controlsfx.control.MaskerPane;
+import org.controlsfx.control.textfield.CustomTextField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.idemia.jkt.tec.VerifClient.VerifClientApplication;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.*;
@@ -76,6 +79,12 @@ public class VerifClientController {
 	private TextArea txtRunLog;
 	@FXML
     private TabPane logReportTabPane;
+	@FXML
+	private ToolBar toolbarErrorReport;
+	@FXML
+	private CustomTextField txtSearchReport;
+	
+	private Label lblSearchCount;
 
 	public VerifClientController() {}
 	
@@ -214,14 +223,14 @@ public class VerifClientController {
 		maskerPane.setVisible(false);
 		stackPane.getChildren().add(maskerPane);
 		
-		webErrorReport.setDisable(true);
+		FontAwesomeIconView iconSearch = new FontAwesomeIconView(FontAwesomeIcon.SEARCH);
+		txtSearchReport.setLeft(iconSearch);
 		
-		// control for displaying error report
-//		WebEngine webEngine = webErrorReport.getEngine();
-
-		// display quick guide
-//		URL urlHowto = this.getClass().getResource("/com/idemia/jkt/tec/VerifClient/view/howto_local.html");
-//		webEngine.load(urlHowto.toString());
+		lblSearchCount = new Label();
+		toolbarErrorReport.getItems().add(lblSearchCount);
+		
+		webErrorReport.setDisable(true);
+		toolbarErrorReport.setDisable(true);
 		
 		// control for displaying run log
 		txtRunLog.setFont(fixedWidthFont);
@@ -282,4 +291,17 @@ public class VerifClientController {
     public TabPane getLogReportTabPane() {
         return logReportTabPane;
     }
+
+	public ToolBar getToolbarErrorReport() {
+		return toolbarErrorReport;
+	}
+
+	public CustomTextField getTxtSearchReport() {
+		return txtSearchReport;
+	}
+
+	public Label getLblSearchCount() {
+		return lblSearchCount;
+	}
+    
 }
