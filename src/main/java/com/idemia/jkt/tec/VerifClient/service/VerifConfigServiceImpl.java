@@ -192,6 +192,14 @@ public class VerifConfigServiceImpl implements VerifConfigService {
 			return new VerificationResponse(false, exceptionMessage);
 		
 	}
+	
+	@Override
+	public void shutdownVerifServer() throws Exception {
+		String uri = SERVER_URL + "killVerifServer";
+		if (serverIsRunning(statusUri)) {
+			doGet(uri);
+		}
+	}
 
 	@Override
 	public ConverterResponse convertUxp(String docPath) throws Exception {

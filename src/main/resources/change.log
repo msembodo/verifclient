@@ -1,3 +1,8 @@
+v0.0.7:
+Author: Martyono Sembodo
+* Support for link check in 3G
+* Clean application exit by shutting down verification server
+
 v0.0.6:
 Author: Martyono Sembodo
 * Adding toolbar and keyboard shortcuts

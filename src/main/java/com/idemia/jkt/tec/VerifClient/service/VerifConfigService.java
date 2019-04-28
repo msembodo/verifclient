@@ -11,6 +11,6 @@ public interface VerifConfigService {
 	public VerificationResponse runVerif() throws Exception;
 	public ConverterResponse convertUxp(String docPath) throws Exception;
 	public ConverterResponse convertExMorphoDoc(String docPath) throws Exception;
-
+	public void shutdownVerifServer() throws Exception;
 
 }

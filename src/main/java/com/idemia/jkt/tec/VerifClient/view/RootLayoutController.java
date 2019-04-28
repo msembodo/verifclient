@@ -209,8 +209,14 @@ public class RootLayoutController {
 		exitAlert.setHeaderText("Quit VerifClient?");
 		exitAlert.setContentText("Changes made in configuration before running verification will not be saved.");
 		Optional<ButtonType> result = exitAlert.showAndWait();
-		if (result.get() == ButtonType.OK)
+		if (result.get() == ButtonType.OK) {
+			try {
+				verifConfigService.shutdownVerifServer();
+			} catch (Exception e) {
+				logger.info("Verification server has been killed: " + e.getMessage());
+			}
 			Platform.exit();
+		}
 	}
 	
 	@FXML
